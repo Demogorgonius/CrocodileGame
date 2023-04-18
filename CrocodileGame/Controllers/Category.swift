@@ -1,13 +1,12 @@
 //
-//  Team.swift
+//  Category.swift
 //  CrocodileGame
 //
 //  Created by Mikhail Tedeev on 18.04.2023.
 //
 
-struct Team {
+struct Category {
     let name: String
-    let points: Int
     let avatar: Character
-    let avatarColor: CrocodileColors
+    let background: CrocodileColors
 }

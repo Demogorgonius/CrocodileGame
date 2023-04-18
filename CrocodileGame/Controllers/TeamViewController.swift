@@ -17,7 +17,7 @@ final class TeamViewController: UIViewController {
     
     //MARK: - Property
     
-    let cells = [
+    let Teams = [
         Team(name: "Ковбои", points: 0, avatar: "🤠", avatarColor: .red),
         Team(name: "Стройняшки", points: 0, avatar: "🍔", avatarColor: .purple),
         Team(name: "Красотки", points: 0, avatar: "💅", avatarColor: .pink)
@@ -30,11 +30,6 @@ final class TeamViewController: UIViewController {
         setupUI()
         setLayout()
     }
-    
-    override func viewDidAppear(_ animated: Bool) {
-        super.viewDidAppear(animated)
-        centerTitle()
-    }
 }
 
 //MARK: - Setup UI
@@ -42,36 +37,25 @@ final class TeamViewController: UIViewController {
 extension TeamViewController {
     private func setupUI() {
         view.backgroundColor = UIColor(patternImage: UIImage(named: "background")!)
-        title = "Кто играет?"
-        navigationController?.navigationBar.prefersLargeTitles = true
+        setupNavigationBar(textLabel: "Кто играет?")
         setupPlayersReadyButton()
         setupAddTeamButton()
         setupTableView()
     }
     
-    func centerTitle(){
-        for navItem in (self.navigationController?.navigationBar.subviews)! {
-            for itemSubView in navItem.subviews {
-                if let largeLabel = itemSubView as? UILabel {
-                    largeLabel.center = CGPoint(x: navItem.bounds.width/2, y: navItem.bounds.height/2)
-                    return;
-                }
-            }
-        }
-    }
-    
     private func setupPlayersReadyButton() {
         playersReadyButton = UIButton(type: .system)
-        playersReadyButton.backgroundColor = .systemGreen
+        playersReadyButton.backgroundColor = CrocodileColors.greenButton.setColor
         playersReadyButton.setTitle("Игроки готовы", for: .normal)
         playersReadyButton.titleLabel?.font = .systemFont(ofSize: 20)
         playersReadyButton.layer.cornerRadius = 10
         playersReadyButton.tintColor = .white
+        playersReadyButton.addTarget(self, action: #selector(playersReadyTarget), for: .touchUpInside)
     }
     
     private func setupAddTeamButton() {
         addTeamButton = UIButton(type: .system)
-        addTeamButton.backgroundColor = .systemOrange
+        addTeamButton.backgroundColor = CrocodileColors.orangeButton.setColor
         addTeamButton.setTitle("Добавить команду", for: .normal)
         addTeamButton.titleLabel?.font = .systemFont(ofSize: 20)
         addTeamButton.layer.cornerRadius = 10
@@ -83,7 +67,7 @@ extension TeamViewController {
         tableView.dataSource = self
         tableView.backgroundColor = .clear
         tableView.separatorColor = .clear
-        tableView.register(TeamTableViewCell.self, forCellReuseIdentifier: "teamCell")
+        tableView.register(CrocodileTableViewCell.self, forCellReuseIdentifier: "crocodileCell")
         
     }
 }
@@ -91,33 +75,38 @@ extension TeamViewController {
 //MARK: - Target Actions
 
 extension TeamViewController {
-    
+    @objc private func playersReadyTarget() {
+        let categoryViewController = CategoryViewController()
+        navigationController?.pushViewController(categoryViewController, animated: true)
+    }
 }
 
-//MARK: - Delegate
+//MARK: - UITableViewDelegate, UITableViewDataSource
 
 extension TeamViewController: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        cells.count
+        Teams.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "teamCell", for: indexPath) as! TeamTableViewCell
-        let currentItem = cells[indexPath.row]
-        cell.configure(name: currentItem.name,
+        let cell = tableView.dequeueReusableCell(withIdentifier: "crocodileCell", for: indexPath) as! CrocodileTableViewCell
+        let currentItem = Teams[indexPath.row]
+        cell.configureAsTeams(name: currentItem.name,
                        avatar: currentItem.avatar,
-                       color: currentItem.avatarColor.setColor)
+                       avatarColor: currentItem.avatarColor.setColor)
         return cell
     }
     
-    
+    func tableView(_ tableView: UITableView, shouldHighlightRowAt indexPath: IndexPath) -> Bool {
+        false
+    }
 }
 
 //MARK: - Layout
 
 extension TeamViewController {
     private func setLayout() {
-        let subviewsArray: [UIView] = [playersReadyButton, addTeamButton, tableView, ]
+        let subviewsArray: [UIView] = [playersReadyButton, addTeamButton, tableView]
         subviewsArray.forEach { ui in
             self.view.addSubview(ui)
             ui.translatesAutoresizingMaskIntoConstraints = false

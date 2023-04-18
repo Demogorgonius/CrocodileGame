@@ -7,7 +7,7 @@
 
 import UIKit
 
-class TeamTableViewCell: UITableViewCell {
+class CrocodileTableViewCell: UITableViewCell {
     
     private var cardBackground = UIView()
     private var avatarView = UIView()
@@ -17,7 +17,6 @@ class TeamTableViewCell: UITableViewCell {
     
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
-        setupCardBackground()
         setLayout()
         self.backgroundColor = .clear
         backgroundView = nil
@@ -27,9 +26,16 @@ class TeamTableViewCell: UITableViewCell {
         fatalError("init(coder:) has not been implemented")
     }
     
-    public func configure(name: String, avatar: Character, color: UIColor) {
-        setupAvatar(avatar: avatar, color: color)
+    public func configureAsTeams(name: String, avatar: Character, avatarColor: UIColor) {
+        setupAvatar(avatar: avatar, color: avatarColor)
         setupNameLabel(text: name)
+        setupCardBackground(backgroundColor: .systemBackground)
+    }
+    
+    public func configureAsCategory(name: String, avatar: Character, background: UIColor) {
+        setupAvatar(avatar: avatar, color: .systemBackground)
+        setupNameLabel(text: name)
+        setupCardBackground(backgroundColor: background)
     }
     
     private func setupAvatar(avatar: Character, color: UIColor) {
@@ -46,9 +52,9 @@ class TeamTableViewCell: UITableViewCell {
         nameLabel.font = .systemFont(ofSize: 20)
     }
     
-    private func setupCardBackground() {
+    private func setupCardBackground(backgroundColor: UIColor) {
         cardBackground.layer.cornerRadius = 10
-        cardBackground.backgroundColor = .systemBackground
+        cardBackground.backgroundColor = backgroundColor
     }
     
 
@@ -56,7 +62,7 @@ class TeamTableViewCell: UITableViewCell {
 
 //MARK: - Constraints
 
-extension TeamTableViewCell {
+extension CrocodileTableViewCell {
     private func setLayout() {
         let subviewsArray: [UIView] = [cardBackground, avatarView, nameLabel, avatarLabel]
         subviewsArray.forEach { view in

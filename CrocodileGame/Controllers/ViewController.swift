@@ -7,13 +7,13 @@
 
 import UIKit
 
-class ViewController: UIViewController {
-
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        view.backgroundColor = .systemGreen
+class ViewController<V: View>: UIViewController {
+    
+    override func loadView() {
+        view = V()
     }
-
-
+    
+    var customView: V {
+        return view as! V
+    }
 }
-

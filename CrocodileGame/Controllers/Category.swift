@@ -8,5 +8,6 @@
 struct Category {
     let name: String
     let avatar: Character
+    var selected: Bool
     let background: CrocodileColors
 }

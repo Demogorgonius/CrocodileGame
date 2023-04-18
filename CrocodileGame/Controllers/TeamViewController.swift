@@ -36,7 +36,7 @@ final class TeamViewController: UIViewController {
 
 extension TeamViewController {
     private func setupUI() {
-        view.backgroundColor = UIColor(patternImage: UIImage(named: "background")!)
+        addBackground()
         setupNavigationBar(textLabel: "Кто играет?")
         setupPlayersReadyButton()
         setupAddTeamButton()
@@ -94,6 +94,7 @@ extension TeamViewController: UITableViewDelegate, UITableViewDataSource {
         cell.configureAsTeams(name: currentItem.name,
                        avatar: currentItem.avatar,
                        avatarColor: currentItem.avatarColor.setColor)
+        
         return cell
     }
     

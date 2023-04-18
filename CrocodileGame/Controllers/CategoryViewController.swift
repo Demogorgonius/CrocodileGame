@@ -16,11 +16,11 @@ class CategoryViewController: UIViewController {
     
     //MARK: - Property
     
-    let categorys = [
-        Category(name: "Животные", avatar: "🐸", background: .purple),
-        Category(name: "Еда", avatar: "🍔", background: .yellow),
-        Category(name: "Личности", avatar: "🤠", background: .blue),
-        Category(name: "Хобби", avatar: "🎬", background: .red)
+    let categories = [
+        Category(name: "Животные", avatar: "🐸", selected: false, background: .purple),
+        Category(name: "Еда", avatar: "🍔", selected: true, background: .yellow),
+        Category(name: "Личности", avatar: "🤠", selected: false, background: .blue),
+        Category(name: "Хобби", avatar: "🎬", selected: false, background: .red)
     ]
     
     //MARK: - Life Cycle
@@ -36,7 +36,7 @@ class CategoryViewController: UIViewController {
 
 extension CategoryViewController {
     private func setupUI() {
-        view.backgroundColor = UIColor(patternImage: UIImage(named: "background")!)
+        addBackground()
         setupPlayersReadyButton()
         setupTableView()
         setupNavigationBar(textLabel: "Категории")
@@ -44,7 +44,7 @@ extension CategoryViewController {
     
     private func setupPlayersReadyButton() {
         startGameButton = UIButton(type: .system)
-        startGameButton.backgroundColor = .systemGreen
+        startGameButton.backgroundColor = CrocodileColors.greenButton.setColor
         startGameButton.setTitle("Начать игру", for: .normal)
         startGameButton.titleLabel?.font = .systemFont(ofSize: 20)
         startGameButton.layer.cornerRadius = 10
@@ -71,12 +71,12 @@ extension CategoryViewController {
 
 extension CategoryViewController: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        categorys.count
+        categories.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "teamCell", for: indexPath) as! CrocodileTableViewCell
-        let category = categorys[indexPath.row]
+        let category = categories[indexPath.row]
         cell.configureAsCategory(name: category.name, avatar: category.avatar, background: category.background.setColor)
         return cell
     }

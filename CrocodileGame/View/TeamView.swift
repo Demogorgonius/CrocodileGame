@@ -11,7 +11,7 @@ protocol TeamViewDelegate: AnyObject {
     
 }
 
-final class TeamView: View {
+final class TeamView: CustomView {
 
     //MARK: - Property
     

@@ -7,7 +7,7 @@
 
 import UIKit
 
-class CustomViewController<V: View>: UIViewController {
+class CustomViewController<V: CustomView>: UIViewController {
     override func loadView() {
         view = V()
     }

@@ -18,9 +18,9 @@ final class TeamViewController: UIViewController {
     //MARK: - Property
     
     let Teams = [
-        Team(name: "Ковбои", points: 0, avatar: "🤠", avatarColor: .red),
-        Team(name: "Стройняшки", points: 0, avatar: "🍔", avatarColor: .purple),
-        Team(name: "Красотки", points: 0, avatar: "💅", avatarColor: .pink)
+        Team(name: "Ковбои", points: 0, pointsLifetime: 0, avatar: "🤠", avatarColor: .red),
+        Team(name: "Стройняшки", points: 0, pointsLifetime: 0, avatar: "🍔", avatarColor: .purple),
+        Team(name: "Красотки", points: 0, pointsLifetime: 0, avatar: "💅", avatarColor: .pink)
     ]
     
     //MARK: - Life Cycle

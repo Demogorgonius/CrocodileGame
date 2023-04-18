@@ -17,10 +17,10 @@ class CategoryViewController: UIViewController {
     //MARK: - Property
     
     let categories = [
-        Category(name: "Животные", avatar: "🐸", selected: false, background: .purple),
-        Category(name: "Еда", avatar: "🍔", selected: true, background: .yellow),
-        Category(name: "Личности", avatar: "🤠", selected: false, background: .blue),
-        Category(name: "Хобби", avatar: "🎬", selected: false, background: .red)
+        Category(name: "Животные", avatar: "🐸", selected: false, background: .purple, names: [""]),
+        Category(name: "Еда", avatar: "🍔", selected: true, background: .yellow, names: [""]),
+        Category(name: "Личности", avatar: "🤠", selected: false, background: .blue, names: [""]),
+        Category(name: "Хобби", avatar: "🎬", selected: false, background: .red, names: [""])
     ]
     
     //MARK: - Life Cycle

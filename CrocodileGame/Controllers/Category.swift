@@ -10,4 +10,5 @@ struct Category {
     let avatar: Character
     var selected: Bool
     let background: CrocodileColors
+    var names: [String]
 }

@@ -73,6 +73,7 @@ class GameViewController: CustomViewController<GameView> {
         let actionYes = UIAlertAction(
             title: "Да",
             style: .destructive) { (action) in
+                self.countdownTimer.invalidate()
                 //            let mainViewController = MainViewController()
                 //            navigationController?.pushViewController(mainViewController, animated: true)
             }
@@ -113,11 +114,13 @@ extension GameViewController: GameViewDelegate {
         switch buttonIdentifier {
         case "Right":
             print("+1 point, Open RightView")
+            countdownTimer.invalidate()
             playSound(soundName: "RightSound", withExtension: "wav")
-//            let rightViewController = RightViewController()
-//            navigationController?.pushViewController(rightViewController, animated: true)
+            let rightViewController = RightViewController()
+            navigationController?.pushViewController(rightViewController, animated: true)
         case "Wrong":
             print("Open WrongView")
+            countdownTimer.invalidate()
             playSound(soundName: "WrongSound", withExtension: "wav")
 //            let wrongViewController = WrongViewController()
 //            navigationController?.pushViewController(wrongViewController, animated: true)

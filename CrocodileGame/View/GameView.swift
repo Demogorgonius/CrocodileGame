@@ -165,7 +165,13 @@ class GameView: CustomView {
         timerLabel.text = text
     }
     
+    func setTargetWordLabel(text: String) {
+        targetWordLabel.text = text
+    }
     
+    func setConditionalsLabel(text: String) {
+        conditionalsLabel.text = text
+    }
 }
 
 // MARK: - Actions

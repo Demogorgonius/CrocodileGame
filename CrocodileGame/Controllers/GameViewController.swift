@@ -14,11 +14,31 @@ class GameViewController: CustomViewController<GameView> {
     var countdownTimer = Timer()
     var player: AVAudioPlayer?
     
+    // For test
+    var getWord: String {
+        get {
+            return ["Яблоко", "СОбака", "Машина", "Картошка"].randomElement() ?? ""
+        }
+    }
+    
+    var getConditionals: String {
+        get {
+            return ["Объясни с помощью слов", "Объясни с помощью жестов", "Объясни с помощью рисунка"].randomElement() ?? ""
+        }
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        startCountdownTimer()
         customView.delegate = self
+        setupLabelsFromModel()
+        startCountdownTimer()
+    }
+    
+    func setupLabelsFromModel() {
+        // Add methods from model
+        customView.setTargetWordLabel(text: getWord)
+        customView.setConditionalsLabel(text: getConditionals)
     }
     
     func startCountdownTimer()  {

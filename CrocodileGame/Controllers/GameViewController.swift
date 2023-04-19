@@ -30,6 +30,9 @@ class GameViewController: CustomViewController<GameView> {
         if secondsLeft > 0 {
             secondsLeft -= 1
             customView.setTimerLabelText(text: String(format: "%02d:%02d", 0, secondsLeft))
+            if secondsLeft == 12 {
+                playSound(soundName: "TimerSound", withExtension: "mp3")
+            }
         } else {
             countdownTimer.invalidate()
         }

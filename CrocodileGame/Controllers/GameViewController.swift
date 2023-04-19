@@ -43,13 +43,14 @@ class GameViewController: CustomViewController<GameView> {
         let actionYes = UIAlertAction(
             title: "Да",
             style: .destructive) { (action) in
-            print("Return to MainView")
-        }
+                //            let mainViewController = MainViewController()
+                //            navigationController?.pushViewController(mainViewController, animated: true)
+            }
         let actionCancel = UIAlertAction(
             title: "Отмена",
             style: .cancel) { (action) in
-            print("Cancel")
-        }
+                print("Cancel")
+            }
 
         alertWindow.addAction(actionYes)
         alertWindow.addAction(actionCancel)
@@ -83,14 +84,19 @@ extension GameViewController: GameViewDelegate {
         case "Right":
             print("+1 point, Open RightView")
             playSound(soundName: "RightSound", withExtension: "wav")
+//            let rightViewController = RightViewController()
+//            navigationController?.pushViewController(rightViewController, animated: true)
         case "Wrong":
             print("Open WrongView")
             playSound(soundName: "WrongSound", withExtension: "wav")
+//            let wrongViewController = WrongViewController()
+//            navigationController?.pushViewController(wrongViewController, animated: true)
         case "Reset" :
             showResetAlertController()
         default:
             print("Not found")
         }
     }
+    
     
 }

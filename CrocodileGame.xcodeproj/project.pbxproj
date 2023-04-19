@@ -7,6 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		84E8580829F059ED0099EE9C /* WrongSound.wav in Resources */ = {isa = PBXBuildFile; fileRef = 84E8580529F059ED0099EE9C /* WrongSound.wav */; };
+		84E8580929F059ED0099EE9C /* TimerSound.wav in Resources */ = {isa = PBXBuildFile; fileRef = 84E8580629F059ED0099EE9C /* TimerSound.wav */; };
+		84E8580A29F059ED0099EE9C /* RightSound.wav in Resources */ = {isa = PBXBuildFile; fileRef = 84E8580729F059ED0099EE9C /* RightSound.wav */; };
 		A56AAEB029EC8C6800C3F04D /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A56AAEAF29EC8C6800C3F04D /* AppDelegate.swift */; };
 		A56AAEB229EC8C6800C3F04D /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A56AAEB129EC8C6800C3F04D /* SceneDelegate.swift */; };
 		A56AAEB429EC8C6800C3F04D /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A56AAEB329EC8C6800C3F04D /* ViewController.swift */; };
@@ -23,6 +26,9 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		84E8580529F059ED0099EE9C /* WrongSound.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = WrongSound.wav; sourceTree = "<group>"; };
+		84E8580629F059ED0099EE9C /* TimerSound.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = TimerSound.wav; sourceTree = "<group>"; };
+		84E8580729F059ED0099EE9C /* RightSound.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = RightSound.wav; sourceTree = "<group>"; };
 		A56AAEAC29EC8C6800C3F04D /* CrocodileGame.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CrocodileGame.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		A56AAEAF29EC8C6800C3F04D /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		A56AAEB129EC8C6800C3F04D /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -51,6 +57,24 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		84E8580329F059ED0099EE9C /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				84E8580429F059ED0099EE9C /* Sounds */,
+			);
+			path = Resources;
+			sourceTree = "<group>";
+		};
+		84E8580429F059ED0099EE9C /* Sounds */ = {
+			isa = PBXGroup;
+			children = (
+				84E8580529F059ED0099EE9C /* WrongSound.wav */,
+				84E8580629F059ED0099EE9C /* TimerSound.wav */,
+				84E8580729F059ED0099EE9C /* RightSound.wav */,
+			);
+			path = Sounds;
+			sourceTree = "<group>";
+		};
 		A56AAEA329EC8C6800C3F04D = {
 			isa = PBXGroup;
 			children = (
@@ -80,6 +104,7 @@
 				A56AAEB829EC8C6A00C3F04D /* Assets.xcassets */,
 				A56AAEBA29EC8C6A00C3F04D /* LaunchScreen.storyboard */,
 				A56AAEBD29EC8C6A00C3F04D /* Info.plist */,
+				84E8580329F059ED0099EE9C /* Resources */,
 			);
 			path = CrocodileGame;
 			sourceTree = "<group>";
@@ -179,8 +204,11 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				84E8580929F059ED0099EE9C /* TimerSound.wav in Resources */,
 				A56AAEBC29EC8C6A00C3F04D /* LaunchScreen.storyboard in Resources */,
+				84E8580A29F059ED0099EE9C /* RightSound.wav in Resources */,
 				A56AAEB929EC8C6A00C3F04D /* Assets.xcassets in Resources */,
+				84E8580829F059ED0099EE9C /* WrongSound.wav in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

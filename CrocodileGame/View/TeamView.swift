@@ -36,7 +36,7 @@ final class TeamView: CustomView {
         button.titleLabel?.font = .systemFont(ofSize: 20)
         button.layer.cornerRadius = 10
         button.tintColor = .white
-        button.addTarget(TeamView.self, action: #selector(addTeamTargetTarget), for: .touchUpInside)
+        button.addTarget(self, action: #selector(addTeamTargetTarget), for: .touchUpInside)
 
         return button
     }()
@@ -48,7 +48,7 @@ final class TeamView: CustomView {
         button.titleLabel?.font = .systemFont(ofSize: 20)
         button.layer.cornerRadius = 10
         button.tintColor = .white
-        button.addTarget(TeamView.self, action: #selector(playersReadyTarget), for: .touchUpInside)
+        button.addTarget(self, action: #selector(playersReadyTarget), for: .touchUpInside)
         
         return button
     }()

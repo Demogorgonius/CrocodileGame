@@ -10,9 +10,10 @@
 		84E8580829F059ED0099EE9C /* WrongSound.wav in Resources */ = {isa = PBXBuildFile; fileRef = 84E8580529F059ED0099EE9C /* WrongSound.wav */; };
 		84E8580929F059ED0099EE9C /* TimerSound.wav in Resources */ = {isa = PBXBuildFile; fileRef = 84E8580629F059ED0099EE9C /* TimerSound.wav */; };
 		84E8580A29F059ED0099EE9C /* RightSound.wav in Resources */ = {isa = PBXBuildFile; fileRef = 84E8580729F059ED0099EE9C /* RightSound.wav */; };
+		84E8580C29F05B0D0099EE9C /* GameView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84E8580B29F05B0D0099EE9C /* GameView.swift */; };
+		84E8580E29F05B1F0099EE9C /* GameViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84E8580D29F05B1F0099EE9C /* GameViewController.swift */; };
 		A56AAEB029EC8C6800C3F04D /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A56AAEAF29EC8C6800C3F04D /* AppDelegate.swift */; };
 		A56AAEB229EC8C6800C3F04D /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A56AAEB129EC8C6800C3F04D /* SceneDelegate.swift */; };
-		A56AAEB429EC8C6800C3F04D /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A56AAEB329EC8C6800C3F04D /* ViewController.swift */; };
 		A56AAEB929EC8C6A00C3F04D /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A56AAEB829EC8C6A00C3F04D /* Assets.xcassets */; };
 		A56AAEBC29EC8C6A00C3F04D /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A56AAEBA29EC8C6A00C3F04D /* LaunchScreen.storyboard */; };
 		C84E4F1229EEB2ED00C5DB8B /* CrocodileTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C84E4F1129EEB2ED00C5DB8B /* CrocodileTableViewCell.swift */; };
@@ -22,17 +23,17 @@
 		C84E4F1A29EEE19900C5DB8B /* CrocodileColors.swift in Sources */ = {isa = PBXBuildFile; fileRef = C84E4F1929EEE19900C5DB8B /* CrocodileColors.swift */; };
 		C86FE59829EE95E8003D9D2E /* TeamViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C86FE59729EE95E8003D9D2E /* TeamViewController.swift */; };
 		C86FE59C29EE96E8003D9D2E /* TeamView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C86FE59B29EE96E8003D9D2E /* TeamView.swift */; };
-		C86FE59E29EE9C6B003D9D2E /* View.swift in Sources */ = {isa = PBXBuildFile; fileRef = C86FE59D29EE9C6B003D9D2E /* View.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		84E8580529F059ED0099EE9C /* WrongSound.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = WrongSound.wav; sourceTree = "<group>"; };
 		84E8580629F059ED0099EE9C /* TimerSound.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = TimerSound.wav; sourceTree = "<group>"; };
 		84E8580729F059ED0099EE9C /* RightSound.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = RightSound.wav; sourceTree = "<group>"; };
+		84E8580B29F05B0D0099EE9C /* GameView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GameView.swift; sourceTree = "<group>"; };
+		84E8580D29F05B1F0099EE9C /* GameViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GameViewController.swift; sourceTree = "<group>"; };
 		A56AAEAC29EC8C6800C3F04D /* CrocodileGame.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CrocodileGame.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		A56AAEAF29EC8C6800C3F04D /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		A56AAEB129EC8C6800C3F04D /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
-		A56AAEB329EC8C6800C3F04D /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		A56AAEB829EC8C6A00C3F04D /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		A56AAEBB29EC8C6A00C3F04D /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		A56AAEBD29EC8C6A00C3F04D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -43,7 +44,6 @@
 		C84E4F1929EEE19900C5DB8B /* CrocodileColors.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = CrocodileColors.swift; path = CrocodileGame/CrocodileColors.swift; sourceTree = SOURCE_ROOT; };
 		C86FE59729EE95E8003D9D2E /* TeamViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TeamViewController.swift; sourceTree = "<group>"; };
 		C86FE59B29EE96E8003D9D2E /* TeamView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TeamView.swift; sourceTree = "<group>"; };
-		C86FE59D29EE9C6B003D9D2E /* View.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = View.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -121,27 +121,19 @@
 		A56AAEC429EC8DA700C3F04D /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
-				A56AAEC529EC8DD900C3F04D /* Onbording */,
-				A56AAEB329EC8C6800C3F04D /* ViewController.swift */,
 				C86FE59729EE95E8003D9D2E /* TeamViewController.swift */,
 				C84E4F1529EEE12000C5DB8B /* CategoryViewController.swift */,
+				84E8580D29F05B1F0099EE9C /* GameViewController.swift */,
 			);
 			path = Controllers;
-			sourceTree = "<group>";
-		};
-		A56AAEC529EC8DD900C3F04D /* Onbording */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = Onbording;
 			sourceTree = "<group>";
 		};
 		C86FE59A29EE96CB003D9D2E /* View */ = {
 			isa = PBXGroup;
 			children = (
-				C86FE59D29EE9C6B003D9D2E /* View.swift */,
 				C86FE59B29EE96E8003D9D2E /* TeamView.swift */,
 				C84E4F1129EEB2ED00C5DB8B /* CrocodileTableViewCell.swift */,
+				84E8580B29F05B0D0099EE9C /* GameView.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -219,16 +211,16 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				A56AAEB429EC8C6800C3F04D /* ViewController.swift in Sources */,
 				C84E4F1A29EEE19900C5DB8B /* CrocodileColors.swift in Sources */,
 				C84E4F1829EEE15100C5DB8B /* Category.swift in Sources */,
 				C86FE59829EE95E8003D9D2E /* TeamViewController.swift in Sources */,
-				C86FE59E29EE9C6B003D9D2E /* View.swift in Sources */,
 				C86FE59C29EE96E8003D9D2E /* TeamView.swift in Sources */,
+				84E8580C29F05B0D0099EE9C /* GameView.swift in Sources */,
 				C84E4F1429EEB97D00C5DB8B /* Team.swift in Sources */,
 				C84E4F1229EEB2ED00C5DB8B /* CrocodileTableViewCell.swift in Sources */,
 				A56AAEB029EC8C6800C3F04D /* AppDelegate.swift in Sources */,
 				C84E4F1629EEE12000C5DB8B /* CategoryViewController.swift in Sources */,
+				84E8580E29F05B1F0099EE9C /* GameViewController.swift in Sources */,
 				A56AAEB229EC8C6800C3F04D /* SceneDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

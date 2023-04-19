@@ -15,9 +15,15 @@ class GameViewController: CustomViewController<GameView> {
     var player: AVAudioPlayer?
     
     // For test
+    var getTeam: String {
+        get {
+            return ["Ковбои", "Стройняшки", "Красотки"].randomElement() ?? ""
+        }
+    }
+    
     var getWord: String {
         get {
-            return ["Яблоко", "СОбака", "Машина", "Картошка"].randomElement() ?? ""
+            return ["Яблоко", "Собака", "Машина", "Картошка"].randomElement() ?? ""
         }
     }
     
@@ -32,6 +38,7 @@ class GameViewController: CustomViewController<GameView> {
         
         customView.delegate = self
         setupLabelsFromModel()
+        setupNavigationBar(textLabel: getTeam)
         startCountdownTimer()
     }
     

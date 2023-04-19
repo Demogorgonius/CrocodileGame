@@ -15,6 +15,13 @@ class GameView: CustomView {
     
     weak var delegate: GameViewDelegate?
     
+    private lazy var backgroundImage: UIImageView = {
+        let image = UIImageView()
+        image.image = UIImage(named: "background")
+        image.contentMode = .scaleAspectFill
+        return image
+    }()
+    
     private lazy var crocodileIcon: UIImageView = {
         let image = UIImageView()
         image.image = UIImage(named: "crocodileGameViewIcon.png")
@@ -66,7 +73,7 @@ class GameView: CustomView {
     private lazy var rightButton: UIButton = {
         let button = UIButton()
         button.restorationIdentifier = "Right"
-        button.backgroundColor = .init(red: 116/255, green: 167/255, blue: 48/255, alpha: 1)
+        button.backgroundColor = CrocodileColors.greenButton.setColor
         button.layer.cornerRadius = 15
         button.setTitle("Правильно", for: .normal)
         button.setTitleColor(.white, for: .normal)
@@ -99,6 +106,7 @@ class GameView: CustomView {
     override func setViews() {
         super.setViews()
         
+        self.addSubview(backgroundImage)
         self.addSubview(crocodileIcon)
         self.addSubview(timerLabel)
         self.addSubview(taskVStackView)
@@ -117,6 +125,7 @@ class GameView: CustomView {
     }
     
     override func layoutViews() {
+        backgroundImage.translatesAutoresizingMaskIntoConstraints = false
         crocodileIcon.translatesAutoresizingMaskIntoConstraints = false
         timerLabel.translatesAutoresizingMaskIntoConstraints = false
         taskVStackView.translatesAutoresizingMaskIntoConstraints = false
@@ -124,6 +133,11 @@ class GameView: CustomView {
         buttonsVStackView.translatesAutoresizingMaskIntoConstraints = false
         
         NSLayoutConstraint.activate([
+            backgroundImage.topAnchor.constraint(equalTo: self.topAnchor),
+            backgroundImage.bottomAnchor.constraint(equalTo: self.bottomAnchor),
+            backgroundImage.leadingAnchor.constraint(equalTo: self.leadingAnchor),
+            backgroundImage.trailingAnchor.constraint(equalTo: self.trailingAnchor),
+            
             crocodileIcon.heightAnchor.constraint(equalToConstant: 139),
             crocodileIcon.widthAnchor.constraint(equalToConstant: 139),
             crocodileIcon.topAnchor.constraint(equalTo: self.safeAreaLayoutGuide.topAnchor, constant: 5),
@@ -159,5 +173,5 @@ private extension GameView {
     @objc func didTapButton(_ button: UIButton) {
         delegate?.GameView(self, didTapButton: button)
     }
-
+    
 }

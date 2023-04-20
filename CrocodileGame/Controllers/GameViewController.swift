@@ -122,8 +122,8 @@ extension GameViewController: GameViewDelegate {
             print("Open WrongView")
             countdownTimer.invalidate()
             playSound(soundName: "WrongSound", withExtension: "wav")
-//            let wrongViewController = WrongViewController()
-//            navigationController?.pushViewController(wrongViewController, animated: true)
+            let wrongViewController = WrongViewController()
+            navigationController?.pushViewController(wrongViewController, animated: true)
         case "Reset" :
             showResetAlertController()
         default:

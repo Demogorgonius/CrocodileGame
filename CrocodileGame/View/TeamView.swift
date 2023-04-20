@@ -10,6 +10,7 @@ import UIKit
 protocol TeamViewDelegate: AnyObject {
     func didTapReadyButton(_ button: UIButton)
     func didTapAddTeamButton(_ button: UIButton)
+    func didTapRemoveButton(_ button: UIButton, indexPath: IndexPath)
 }
 
 final class TeamView: CustomView {
@@ -25,7 +26,7 @@ final class TeamView: CustomView {
         let tableView = UITableView()
         tableView.backgroundColor = .clear
         tableView.separatorColor = .clear
-        tableView.register(CrocodileTableViewCell.self, forCellReuseIdentifier: "crocodileCell")
+        tableView.register(CrocodileTableViewCell.self, forCellReuseIdentifier: "teamCell")
         return tableView
     }()
     
@@ -106,7 +107,12 @@ final class TeamView: CustomView {
 
 //MARK: - Target Actions
 
-extension TeamView {
+extension TeamView: CrocodileTableViewCellDelegate {
+    func removeTeamDidTouch(_ button: UIButton, indexPath cell: UITableViewCell) {
+        guard let indexPath = tableView.indexPath(for: cell) else { return }
+        delegate?.didTapRemoveButton(button, indexPath: indexPath)
+    }
+    
     @objc private func playersReadyTarget(_ sender: UIButton) {
         delegate?.didTapReadyButton(sender)
     }
@@ -124,12 +130,12 @@ extension TeamView: UITableViewDelegate, UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "crocodileCell", for: indexPath) as! CrocodileTableViewCell
+        let cell = tableView.dequeueReusableCell(withIdentifier: "teamCell", for: indexPath) as! CrocodileTableViewCell
         let currentItem = teams[indexPath.row]
         cell.configureAsTeams(name: currentItem.name,
                        avatar: currentItem.avatar,
                        avatarColor: currentItem.avatarColor.setColor)
-        
+        cell.delegate = self
         return cell
     }
     

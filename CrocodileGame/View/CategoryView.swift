@@ -9,6 +9,7 @@ import UIKit
 
 protocol CategoryViewDelegate: AnyObject {
     func startGameButton(_ button: UIButton)
+    func cellDidSelected(_ indexPath: IndexPath)
 }
 
 final class CategoryView: CustomView {
@@ -16,7 +17,7 @@ final class CategoryView: CustomView {
     //MARK: - Property
     
     weak var delegate: CategoryViewDelegate?
-    let categories = CategoryViewController().categories
+    var categories = CategoryStorage.shared.categories
     
     //MARK: - UI Elements
     
@@ -24,7 +25,7 @@ final class CategoryView: CustomView {
         let tableView = UITableView()
         tableView.backgroundColor = .clear
         tableView.separatorColor = .clear
-        tableView.register(CrocodileTableViewCell.self, forCellReuseIdentifier: "crocodileCell")
+        tableView.register(CrocodileTableViewCell.self, forCellReuseIdentifier: "categoryCell")
         return tableView
     }()
     
@@ -35,6 +36,7 @@ final class CategoryView: CustomView {
         button.titleLabel?.font = .systemFont(ofSize: 20)
         button.layer.cornerRadius = 10
         button.tintColor = .white
+        button.addTarget(self, action: #selector(startGameTarget), for: .touchUpInside)
         return button
     }()
     
@@ -94,13 +96,17 @@ extension CategoryView: UITableViewDelegate, UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "crocodileCell", for: indexPath) as! CrocodileTableViewCell
+        let cell = tableView.dequeueReusableCell(withIdentifier: "categoryCell", for: indexPath) as! CrocodileTableViewCell
         let category = categories[indexPath.row]
-        cell.configureAsCategory(name: category.name, avatar: category.avatar, background: category.background.setColor)
+        cell.configureAsCategory(name: category.name,
+                                 avatar: category.avatar,
+                                 background: category.background.setColor,
+                                 isSelected: category.selected)
         return cell
     }
     
-    func tableView(_ tableView: UITableView, shouldHighlightRowAt indexPath: IndexPath) -> Bool {
-        false
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        delegate?.cellDidSelected(indexPath)
+        tableView.reloadData()
     }
 }

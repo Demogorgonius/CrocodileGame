@@ -8,7 +8,7 @@
 import UIKit
 
 protocol CrocodileTableViewCellDelegate {
-    func removeTeamTarget(indexPath cell: UITableViewCell)
+    func removeTeamDidTouch(_ button: UIButton, indexPath cell: UITableViewCell)
 }
 
 class CrocodileTableViewCell: UITableViewCell {
@@ -19,7 +19,11 @@ class CrocodileTableViewCell: UITableViewCell {
     private var avatarView = UIView()
     private var avatarLabel = UILabel()
     private var nameLabel = UILabel()
-    private var cellAccessoryView = UIView()
+    private var removeTeamButton = UIButton()
+    private var checkmarkImageView = UIImageView()
+    private var scoreView = UIView()
+    private var scorePointsLabel = UILabel()
+    private var scoreLabel = UILabel()
     
     //MARK: - Property
     
@@ -29,7 +33,6 @@ class CrocodileTableViewCell: UITableViewCell {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
         setLayout()
         self.backgroundColor = .clear
-        backgroundView = nil
     }
     
     required init?(coder: NSCoder) {
@@ -37,24 +40,24 @@ class CrocodileTableViewCell: UITableViewCell {
     }
     
     public func configureAsTeams(name: String, avatar: Character, avatarColor: UIColor) {
+        setupRemoveTeamButton()
         setupAvatar(avatar: avatar, color: avatarColor)
         setupNameLabel(text: name, color: .black)
-        setupCardBackground(backgroundColor: .systemBackground)
-        setupAccessoryView(type: .teams)
+        setupCardBackground(backgroundColor: .white)
     }
     
-    public func configureAsCategory(name: String, avatar: Character, background: UIColor) {
-        setupAvatar(avatar: avatar, color: .systemBackground)
+    public func configureAsCategory(name: String, avatar: Character, background: UIColor, isSelected: Bool) {
+        setupAvatar(avatar: avatar, color: .white)
         setupNameLabel(text: name, color: .white)
         setupCardBackground(backgroundColor: background)
-        setupAccessoryView(type: .category)
+        setupCheckmarkImageView(isSelected: isSelected)
     }
     
     public func configureAsLeaderBoard(name: String, avatar: Character, avatarColor: UIColor, score: Int) {
         setupAvatar(avatar: avatar, color: avatarColor)
         setupNameLabel(text: name, color: .black)
-        setupCardBackground(backgroundColor: .systemBackground)
-        setupAccessoryView(type: .leaderBoard, score: score)
+        setupCardBackground(backgroundColor: .white)
+        setupScoreLabels(score: score)
     }
     
     private func setupAvatar(avatar: Character, color: UIColor) {
@@ -77,49 +80,38 @@ class CrocodileTableViewCell: UITableViewCell {
         cardBackground.backgroundColor = backgroundColor
     }
     
-    private func setupAccessoryView(type: Accessory, score: Int? = nil) {
-        switch type {
-        case .teams:
-            let button = UIButton(type: .system)
-            button.frame = cellAccessoryView.frame
-            button.setImage(UIImage(systemName: "xmark"), for: .normal)
-            button.imageView?.frame = button.frame
-            button.addTarget(self, action: #selector(removeTeamTarget), for: .touchUpInside)
-            cellAccessoryView.addSubview(button)
-            return
-        case .category:
-            let imageView = UIImageView()
-            imageView.image = UIImage(systemName: "checkmark.circle.fill")
-            imageView.tintColor = .white
-            imageView.frame = cellAccessoryView.frame
-            cellAccessoryView.addSubview(imageView)
-            return
-        case .leaderBoard:
-            guard let score else { return }
-            let scoreLabel = UILabel()
-            scoreLabel.font = .systemFont(ofSize: 65)
-            scoreLabel.text = "\(score)"
-            let pointsLabel = UILabel()
-            pointsLabel.font = .systemFont(ofSize: 15)
-            pointsLabel.text = "Очки"
-            cellAccessoryView.addSubview(scoreLabel)
-            cellAccessoryView.addSubview(pointsLabel)
-            return
+    private func setupRemoveTeamButton() {
+        removeTeamButton.setImage(UIImage(systemName: "xmark"), for: .normal)
+        removeTeamButton.tintColor = .black
+        removeTeamButton.addTarget(self, action: #selector(removeTeamTarget), for: .touchUpInside)
+        
+    }
+    
+    private func setupCheckmarkImageView(isSelected: Bool) {
+        checkmarkImageView.image = UIImage(systemName: "checkmark.circle.fill")
+        checkmarkImageView.tintColor = .white
+        if isSelected {
+            checkmarkImageView.isHidden = false
+        } else {
+            checkmarkImageView.isHidden = true
         }
     }
     
-    private enum Accessory {
-        case teams
-        case category
-        case leaderBoard
+    private func setupScoreLabels(score: Int) {
+        scorePointsLabel.font = .systemFont(ofSize: 40)
+        scorePointsLabel.textAlignment = .center
+        scorePointsLabel.text = "\(score)"
+        scoreLabel.font = .systemFont(ofSize: 15)
+        scoreLabel.textAlignment = .center
+        scoreLabel.text = "Очки"
     }
 }
 
 //MARK: - Target Actions
 
 extension CrocodileTableViewCell {
-    @objc private func removeTeamTarget() {
-        print("tap")
+    @objc private func removeTeamTarget(_ sender: UIButton) {
+        delegate?.removeTeamDidTouch(sender, indexPath: self)
     }
 }
 
@@ -127,7 +119,9 @@ extension CrocodileTableViewCell {
 
 extension CrocodileTableViewCell {
     private func setLayout() {
-        let subviewsArray: [UIView] = [cardBackground, avatarView, cellAccessoryView, nameLabel, avatarLabel]
+        let subviewsArray: [UIView] = [cardBackground, avatarView, nameLabel,
+                                       avatarLabel, removeTeamButton, checkmarkImageView,
+                                       scorePointsLabel, scoreLabel]
         subviewsArray.forEach { view in
             self.contentView.addSubview(view)
             view.translatesAutoresizingMaskIntoConstraints = false
@@ -151,13 +145,6 @@ extension CrocodileTableViewCell {
             avatarView.widthAnchor.constraint(equalToConstant: 56),
             avatarView.heightAnchor.constraint(equalToConstant: 56),
             
-            //MARK: Layout avatarView
-            
-            cellAccessoryView.trailingAnchor.constraint(equalTo: cardBackground.trailingAnchor, constant: -17),
-            cellAccessoryView.centerYAnchor.constraint(equalTo: cardBackground.centerYAnchor),
-            cellAccessoryView.widthAnchor.constraint(equalToConstant: 56),
-            cellAccessoryView.heightAnchor.constraint(equalToConstant: 56),
-            
             //MARK: Layout avatarLabel
             
             avatarLabel.centerXAnchor.constraint(equalTo: avatarView.centerXAnchor),
@@ -168,7 +155,31 @@ extension CrocodileTableViewCell {
             nameLabel.topAnchor.constraint(equalTo: cardBackground.topAnchor, constant: 37),
             nameLabel.leadingAnchor.constraint(equalTo: avatarView.trailingAnchor, constant: 58),
             nameLabel.bottomAnchor.constraint(equalTo: cardBackground.bottomAnchor, constant: -37),
-            nameLabel.centerYAnchor.constraint(equalTo: cardBackground.centerYAnchor)
+            nameLabel.centerYAnchor.constraint(equalTo: cardBackground.centerYAnchor),
+            
+            //MARK: Layout removeTeamButton
+            
+            removeTeamButton.trailingAnchor.constraint(equalTo: cardBackground.trailingAnchor, constant: -17),
+            removeTeamButton.centerYAnchor.constraint(equalTo: cardBackground.centerYAnchor),
+            removeTeamButton.widthAnchor.constraint(equalToConstant: 56),
+            removeTeamButton.heightAnchor.constraint(equalToConstant: 56),
+            
+            //MARK: Layout checkmarkImageView
+            
+            checkmarkImageView.trailingAnchor.constraint(equalTo: cardBackground.trailingAnchor, constant: -17),
+            checkmarkImageView.centerYAnchor.constraint(equalTo: cardBackground.centerYAnchor),
+            checkmarkImageView.widthAnchor.constraint(equalToConstant: 56),
+            checkmarkImageView.heightAnchor.constraint(equalToConstant: 56),
+            
+            //MARK: Layout scorePointsLabel
+            
+            scorePointsLabel.topAnchor.constraint(equalTo: checkmarkImageView.topAnchor, constant: -10),
+            scorePointsLabel.centerXAnchor.constraint(equalTo: checkmarkImageView.centerXAnchor),
+            
+            //MARK: Layout scoreView
+            
+            scoreLabel.bottomAnchor.constraint(equalTo: checkmarkImageView.bottomAnchor),
+            scoreLabel.centerXAnchor.constraint(equalTo: checkmarkImageView.centerXAnchor),
         ])
     }
 }

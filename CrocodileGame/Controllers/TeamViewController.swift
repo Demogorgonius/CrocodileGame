@@ -9,18 +9,12 @@ import UIKit
 
 final class TeamViewController: CustomViewController<TeamView> {
     
-    //MARK: - UI Elements
-    
-    private var tableView = UITableView()
-    private var addTeamButton = UIButton()
-    private var playersReadyButton = UIButton()
-    
     //MARK: - Property
     
     let teams = [
-        Team(name: "Ковбои", points: 0, pointsLifetime: 0, avatar: "🤠", avatarColor: .red),
-        Team(name: "Стройняшки", points: 0, pointsLifetime: 0, avatar: "🍔", avatarColor: .purple),
-        Team(name: "Красотки", points: 0, pointsLifetime: 0, avatar: "💅", avatarColor: .pink)
+        Team(name: "Ковбои", points: 10, pointsLifetime: 0, didPlayNextGame: true, avatar: "🤠", avatarColor: .red),
+        Team(name: "Стройняшки", points: 13, pointsLifetime: 0, didPlayNextGame: false, avatar: "🍔", avatarColor: .purple),
+        Team(name: "Красотки", points: 4, pointsLifetime: 0, didPlayNextGame: true, avatar: "💅", avatarColor: .pink)
     ]
     
     //MARK: - Life Cycle
@@ -34,6 +28,10 @@ final class TeamViewController: CustomViewController<TeamView> {
 //MARK: - Target Actions
 
 extension TeamViewController: TeamViewDelegate {
+    func didTapRemoveButton(_ button: UIButton, indexPath: IndexPath) {
+        print("kek")
+    }
+    
     func didTapReadyButton(_ button: UIButton) {
         print("ready")
         let categoryViewController = CategoryViewController()

@@ -7,7 +7,7 @@
 
 import UIKit
 
-enum CrocodileColors {
+enum CrocodileColors: Codable, CaseIterable {
     case red
     case purple
     case pink

@@ -11,11 +11,8 @@ final class TeamViewController: CustomViewController<TeamView> {
     
     //MARK: - Property
     
-    let teams = [
-        Team(name: "Ковбои", points: 10, pointsLifetime: 0, didPlayNextGame: true, avatar: "🤠", avatarColor: .red),
-        Team(name: "Стройняшки", points: 13, pointsLifetime: 0, didPlayNextGame: false, avatar: "🍔", avatarColor: .purple),
-        Team(name: "Красотки", points: 4, pointsLifetime: 0, didPlayNextGame: true, avatar: "💅", avatarColor: .pink)
-    ]
+    let teams = TeamManager.shared
+    
     
     //MARK: - Life Cycle
     override func viewDidLoad() {
@@ -28,17 +25,15 @@ final class TeamViewController: CustomViewController<TeamView> {
 //MARK: - Target Actions
 
 extension TeamViewController: TeamViewDelegate {
+    func didTapAddTeamButton(_ alertController: UIAlertController) {
+        present(alertController, animated: true)
+    }
+    
     func didTapRemoveButton(_ button: UIButton, indexPath: IndexPath) {
-        print("kek")
     }
     
     func didTapReadyButton(_ button: UIButton) {
-        print("ready")
         let categoryViewController = CategoryViewController()
         navigationController?.pushViewController(categoryViewController, animated: true)
-    }
-    
-    func didTapAddTeamButton(_ button: UIButton) {
-        print("add")
     }
 }

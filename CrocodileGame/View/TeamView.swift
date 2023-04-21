@@ -9,7 +9,7 @@ import UIKit
 
 protocol TeamViewDelegate: AnyObject {
     func didTapReadyButton(_ button: UIButton)
-    func didTapAddTeamButton(_ button: UIButton)
+    func didTapAddTeamButton(_ alertController: UIAlertController)
     func didTapRemoveButton(_ button: UIButton, indexPath: IndexPath)
 }
 
@@ -18,7 +18,9 @@ final class TeamView: CustomView {
     //MARK: - Property
     
     weak var delegate: TeamViewDelegate?
-    let teams = TeamViewController().teams
+    var teamArray = TeamManager.shared.getTeamsWhoPlay()
+    var teamManager = TeamManager.shared
+    
     
     //MARK: - UI Elements
     
@@ -38,7 +40,6 @@ final class TeamView: CustomView {
         button.layer.cornerRadius = 10
         button.tintColor = .white
         button.addTarget(self, action: #selector(addTeamTargetTarget), for: .touchUpInside)
-
         return button
     }()
 
@@ -50,7 +51,6 @@ final class TeamView: CustomView {
         button.layer.cornerRadius = 10
         button.tintColor = .white
         button.addTarget(self, action: #selector(playersReadyTarget), for: .touchUpInside)
-        
         return button
     }()
     
@@ -99,9 +99,7 @@ final class TeamView: CustomView {
             tableView.leadingAnchor.constraint(equalTo: self.leadingAnchor),
             tableView.trailingAnchor.constraint(equalTo: self.trailingAnchor),
             tableView.bottomAnchor.constraint(equalTo: addTeamButton.topAnchor)
-            
         ])
-        
     }
 }
 
@@ -111,6 +109,9 @@ extension TeamView: CrocodileTableViewCellDelegate {
     func removeTeamDidTouch(_ button: UIButton, indexPath cell: UITableViewCell) {
         guard let indexPath = tableView.indexPath(for: cell) else { return }
         delegate?.didTapRemoveButton(button, indexPath: indexPath)
+        teamManager.removeTeamFromWhoPlay(teamArray[indexPath.row].name)
+        teamArray = teamManager.getTeamsWhoPlay()
+        tableView.reloadData()
     }
     
     @objc private func playersReadyTarget(_ sender: UIButton) {
@@ -118,7 +119,20 @@ extension TeamView: CrocodileTableViewCellDelegate {
     }
 
     @objc private func addTeamTargetTarget(_ sender: UIButton) {
-        delegate?.didTapAddTeamButton(sender)
+        let alertSetName = UIAlertController(title: "Добавить команду", message: nil, preferredStyle: .alert)
+        alertSetName.addTextField { textField in
+            textField.placeholder = "Введите название команды"
+        }
+        let cancelAction = UIAlertAction(title: "Отменить", style: .default)
+        let addTeamAction = UIAlertAction(title: "Добавить", style: .cancel) { action in
+            guard let textfield = alertSetName.textFields?.first?.text else { return }
+            self.teamManager.createTeam(nameTeam: textfield)
+            self.teamArray = TeamManager.shared.getTeamsWhoPlay()
+            self.tableView.reloadData()
+        }
+        alertSetName.addAction(addTeamAction)
+        alertSetName.addAction(cancelAction)
+        self.delegate?.didTapAddTeamButton(alertSetName)
     }
 }
 
@@ -126,20 +140,26 @@ extension TeamView: CrocodileTableViewCellDelegate {
 
 extension TeamView: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        teams.count
+        return teamArray.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "teamCell", for: indexPath) as! CrocodileTableViewCell
-        let currentItem = teams[indexPath.row]
-        cell.configureAsTeams(name: currentItem.name,
-                       avatar: currentItem.avatar,
-                       avatarColor: currentItem.avatarColor.setColor)
+        let currentItem = teamArray[indexPath.row]
+        if teamArray.count <= 2 {
+            cell.configureAsTeams(name: currentItem.name,
+                                  avatar: currentItem.avatar,
+                                  avatarColor: currentItem.avatarColor.setColor,
+                                  removeIsHidden: true)
+        } else {
+            cell.configureAsTeams(name: currentItem.name,
+                                  avatar: currentItem.avatar,
+                                  avatarColor: currentItem.avatarColor.setColor,
+                                  removeIsHidden: false)
+        }
         cell.delegate = self
         return cell
     }
     
-    func tableView(_ tableView: UITableView, shouldHighlightRowAt indexPath: IndexPath) -> Bool {
-        false
-    }
+    
 }

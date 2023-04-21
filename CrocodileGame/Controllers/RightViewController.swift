@@ -21,6 +21,10 @@ class RightViewController: CustomViewController<RightView> {
         customView.setTeamName(name: (gameManager?.getCurrentTeam().name)!)
         customView.setTeamPoints(points: (gameManager?.getCurrentTeam().points)!)
         customView.setNextTeamLabel(team: (gameManager?.getNextTeam().name)!)
+        
+        if (gameManager?.isLastRound)! {
+            customView.setTitleButtonForLastRound()
+        }
     }
     
 }

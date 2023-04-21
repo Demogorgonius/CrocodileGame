@@ -8,22 +8,34 @@
 import Foundation
 
 class CategoryStorage {
-    
     static var shared = CategoryStorage()
     
     public func getWordsForGame() -> [String] {
         var container = [String]()
-        categories.forEach { category in
+        all.forEach { category in
             if category.selected {
                 container.append(category.name)
-                
             }
         }
         let randomized = Array(Set(container))
         return randomized
     }
     
-    var categories = [
+    public func changeSelection(name: String, isSelected: Bool) {
+        let newCategories = all.map { category -> Category in
+            if category.name == name {
+                var modify = category
+                modify.selected = isSelected
+                return modify
+            } else {
+                return category
+            }
+        }
+        all = newCategories
+        print("all", all)
+    }
+    
+    var all = [
         Category(name: "Животные",
                  avatar: "🐸",
                  selected: true,

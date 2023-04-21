@@ -11,7 +11,7 @@ class CategoryViewController: CustomViewController<CategoryView> {
     
     //MARK: - Property
     
-    var categories = CategoryStorage.shared.categories
+    var categories = CategoryStorage.shared
     
     //MARK: - Life Cycle
     
@@ -25,16 +25,15 @@ class CategoryViewController: CustomViewController<CategoryView> {
 //MARK: - CategoryViewDelegate
 
 extension CategoryViewController: CategoryViewDelegate {
+    
     func cellDidSelected(_ indexPath: IndexPath) {
-        var categorySelected = categories[indexPath.row].selected
-        if categorySelected {
-            print(categorySelected)
-            categorySelected = false
-            print(categorySelected)
+        
+        if categories.all[indexPath.row].selected {
+            categories.changeSelection(name: categories.all[indexPath.row].name,
+                                       isSelected: false)
         } else {
-            print(categorySelected)
-            categorySelected = true
-            print(categorySelected)
+            categories.changeSelection(name: categories.all[indexPath.row].name,
+                                       isSelected: true)
         }
     }
     

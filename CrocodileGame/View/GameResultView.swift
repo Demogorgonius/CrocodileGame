@@ -15,7 +15,7 @@ final class GameResultView: CustomView {
     //MARK: - Property
     
     weak var delegate: GameResultViewDelegate?
-    let teams = TeamViewController().teams.sorted { $0.points > $1.points }
+    let teams = [Team]()
     
     //MARK: - UI Elements
     

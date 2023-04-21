@@ -18,7 +18,8 @@ final class TeamView: CustomView {
     //MARK: - Property
     
     weak var delegate: TeamViewDelegate?
-    let teams = TeamViewController().teams
+    var teams = TeamManager.shared.getTeams()
+    
     
     //MARK: - UI Elements
     
@@ -99,9 +100,7 @@ final class TeamView: CustomView {
             tableView.leadingAnchor.constraint(equalTo: self.leadingAnchor),
             tableView.trailingAnchor.constraint(equalTo: self.trailingAnchor),
             tableView.bottomAnchor.constraint(equalTo: addTeamButton.topAnchor)
-            
         ])
-        
     }
 }
 
@@ -126,7 +125,7 @@ extension TeamView: CrocodileTableViewCellDelegate {
 
 extension TeamView: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        teams.count
+        return teams.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {

@@ -39,28 +39,28 @@ class CrocodileTableViewCell: UITableViewCell {
         fatalError("init(coder:) has not been implemented")
     }
     
-    public func configureAsTeams(name: String, avatar: Character, avatarColor: UIColor) {
+    public func configureAsTeams(name: String, avatar: String, avatarColor: UIColor) {
         setupRemoveTeamButton()
         setupAvatar(avatar: avatar, color: avatarColor)
         setupNameLabel(text: name, color: .black)
         setupCardBackground(backgroundColor: .white)
     }
     
-    public func configureAsCategory(name: String, avatar: Character, background: UIColor, isSelected: Bool) {
+    public func configureAsCategory(name: String, avatar: String, background: UIColor, isSelected: Bool) {
         setupAvatar(avatar: avatar, color: .white)
         setupNameLabel(text: name, color: .white)
         setupCardBackground(backgroundColor: background)
         setupCheckmarkImageView(isSelected: isSelected)
     }
     
-    public func configureAsLeaderBoard(name: String, avatar: Character, avatarColor: UIColor, score: Int) {
+    public func configureAsLeaderBoard(name: String, avatar: String, avatarColor: UIColor, score: Int) {
         setupAvatar(avatar: avatar, color: avatarColor)
         setupNameLabel(text: name, color: .black)
         setupCardBackground(backgroundColor: .white)
         setupScoreLabels(score: score)
     }
     
-    private func setupAvatar(avatar: Character, color: UIColor) {
+    private func setupAvatar(avatar: String, color: UIColor) {
         avatarView.layer.cornerRadius = 56 / 2
         avatarView.backgroundColor = color
         avatarView.tintColor = color

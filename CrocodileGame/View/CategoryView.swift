@@ -17,7 +17,7 @@ final class CategoryView: CustomView {
     //MARK: - Property
     
     weak var delegate: CategoryViewDelegate?
-    var categories = CategoryStorage.shared.categories
+    var categories = CategoryStorage.shared.all
     
     //MARK: - UI Elements
     
@@ -98,15 +98,17 @@ extension CategoryView: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "categoryCell", for: indexPath) as! CrocodileTableViewCell
         let category = categories[indexPath.row]
+        print(category.selected)
         cell.configureAsCategory(name: category.name,
                                  avatar: category.avatar,
                                  background: category.background.setColor,
                                  isSelected: category.selected)
+        cell.selectionStyle = .none
         return cell
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         delegate?.cellDidSelected(indexPath)
-        tableView.reloadData()
+        
     }
 }

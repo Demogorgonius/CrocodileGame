@@ -9,6 +9,7 @@ import UIKit
 
 class StartViewController: UIViewController {
     
+
     lazy var backgroundImage: UIImageView = {
         let imageView = UIImageView()
         imageView.translatesAutoresizingMaskIntoConstraints = false
@@ -56,6 +57,7 @@ class StartViewController: UIViewController {
         element.setTitle("Результаты", for: .normal)
         element.heightAnchor.constraint(equalToConstant: 63).isActive = true
         element.layer.cornerRadius = 10
+        element.addTarget(self, action: #selector(resultButtonTapped), for: .touchUpInside)
         element.translatesAutoresizingMaskIntoConstraints = false
         return element
     }()
@@ -102,6 +104,13 @@ class StartViewController: UIViewController {
         if let navigationVC = navigationController {
             let teamVC = TeamViewController()
             navigationVC.pushViewController(teamVC, animated: true)
+        }
+    }
+    
+    @objc func resultButtonTapped(_ sender: UIButton) {
+        if let navigationVC = navigationController {
+            let resultVC = ResultViewController()
+            navigationVC.pushViewController(resultVC, animated: true)
         }
     }
     

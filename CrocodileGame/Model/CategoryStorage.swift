@@ -7,7 +7,7 @@
 
 import Foundation
 
-class CategoryStorage {
+final class CategoryStorage {
     static var shared = CategoryStorage()
     
     public func getWordsForGame() -> [String] {
@@ -32,7 +32,6 @@ class CategoryStorage {
             }
         }
         all = newCategories
-        print("all", all)
     }
     
     var all = [

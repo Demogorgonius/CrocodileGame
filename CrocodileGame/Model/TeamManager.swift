@@ -7,14 +7,17 @@
 
 import Foundation
 
-class TeamManager {
+final class TeamManager {
+    
+    //MARK: - Property
+    
     static let shared = TeamManager()
     var arrOfTeams: [Team] = []
-    
     var userDefaults = UserDefaults.standard
     let encoder = JSONEncoder()
     let decoder = JSONDecoder()
     
+    /// Подгружаем команды из юзердефолтс. Если нил, то создаем две по умолчанию
     func getTeams() -> [Team] {
         let defaultTeams = [Team(name: "Ковбои",
                                  points: 0,
@@ -26,25 +29,23 @@ class TeamManager {
                                  pointsLifetime: 0,
                                  didPlayNextGame: true,
                                  avatar: "🍔", avatarColor: .purple)]
-        /// Подгружаем команды из юзердефолтс. Если нил, то создаем две по умолчанию
         guard let savedTeams = userDefaults.object(forKey: "teams") as? Data else {
-            print("cant get teams from UserDefaults")
             return defaultTeams
         }
         guard let decodedTeams = try? decoder.decode([Team].self, from: savedTeams) else {
-            print("cant get decode teams")
             return defaultTeams
         }
         arrOfTeams = decodedTeams
-        print("done decode", decodedTeams)
         return decodedTeams
     }
     
+    /// Сохраняем команды
     func saveTeams(teams: [Team]) {
         guard let encoded =  try? encoder.encode(teams) else { return }
         userDefaults.set(encoded, forKey: "teams")
     }
     
+    /// Получаем команды, которые будут играть
     func getTeamsWhoPlay() -> [Team] {
         let allTeams = getTeams()
         var whoPlay = [Team]()
@@ -56,6 +57,7 @@ class TeamManager {
         return whoPlay
     }
     
+    /// Проверяем, была ли ранее такая команда, если нет, то создаем новую
     func createTeam(nameTeam: String) {
         var allTeams = getTeams()
         if allTeams.contains(where: { team in
@@ -87,8 +89,30 @@ class TeamManager {
         }
     }
     
-    func addPointToTeam(_ team: Team) {
-        
+    /// Убираем команду из списка играющих в эту игру
+    func removeTeamFromWhoPlay(_ name: String) {
+        let updatedTeam = getTeams().map { team -> Team in
+            if team.name == name {
+                var modify = team
+                modify.didPlayNextGame = !team.didPlayNextGame
+                return modify
+            }
+            return team
+        }
+        saveTeams(teams: updatedTeam)
     }
-
+    
+    /// Добавляем очки команде
+    func addPointToTeam(_ name: String) {
+            let updatedTeam = getTeams().map { team -> Team in
+                if team.name == name {
+                    var modify = team
+                    modify.points += 1
+                    modify.pointsLifetime += 1
+                    return modify
+                }
+                return team
+            }
+            saveTeams(teams: updatedTeam)
+    }
 }

@@ -98,7 +98,6 @@ extension CategoryView: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "categoryCell", for: indexPath) as! CrocodileTableViewCell
         let category = categories[indexPath.row]
-        print(category.selected)
         cell.configureAsCategory(name: category.name,
                                  avatar: category.avatar,
                                  background: category.background.setColor,
@@ -109,6 +108,7 @@ extension CategoryView: UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         delegate?.cellDidSelected(indexPath)
-        
+        categories = CategoryStorage.shared.all
+        tableView.reloadData()
     }
 }

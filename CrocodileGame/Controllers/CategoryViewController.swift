@@ -7,7 +7,7 @@
 
 import UIKit
 
-class CategoryViewController: CustomViewController<CategoryView> {
+final class CategoryViewController: CustomViewController<CategoryView> {
     
     //MARK: - Property
     

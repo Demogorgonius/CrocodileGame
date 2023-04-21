@@ -25,17 +25,15 @@ final class TeamViewController: CustomViewController<TeamView> {
 //MARK: - Target Actions
 
 extension TeamViewController: TeamViewDelegate {
+    func didTapAddTeamButton(_ alertController: UIAlertController) {
+        present(alertController, animated: true)
+    }
+    
     func didTapRemoveButton(_ button: UIButton, indexPath: IndexPath) {
-        print("kek")
     }
     
     func didTapReadyButton(_ button: UIButton) {
-        print("ready")
         let categoryViewController = CategoryViewController()
         navigationController?.pushViewController(categoryViewController, animated: true)
-    }
-    
-    func didTapAddTeamButton(_ button: UIButton) {
-        teams.createTeam(nameTeam: "test")
     }
 }

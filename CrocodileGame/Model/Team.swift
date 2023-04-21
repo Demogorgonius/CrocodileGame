@@ -13,8 +13,3 @@ struct Team: Codable {
     let avatar: String
     let avatarColor: CrocodileColors
 }
-
-struct Testing: Codable {
-    var name: String
-    var id: Int
-}

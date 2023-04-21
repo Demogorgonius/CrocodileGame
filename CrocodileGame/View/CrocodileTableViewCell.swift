@@ -11,7 +11,7 @@ protocol CrocodileTableViewCellDelegate {
     func removeTeamDidTouch(_ button: UIButton, indexPath cell: UITableViewCell)
 }
 
-class CrocodileTableViewCell: UITableViewCell {
+final class CrocodileTableViewCell: UITableViewCell {
     
     //MARK: - UI Elements
     
@@ -39,21 +39,30 @@ class CrocodileTableViewCell: UITableViewCell {
         fatalError("init(coder:) has not been implemented")
     }
     
-    public func configureAsTeams(name: String, avatar: String, avatarColor: UIColor) {
-        setupRemoveTeamButton()
+    public func configureAsTeams(name: String,
+                                 avatar: String,
+                                 avatarColor: UIColor,
+                                 removeIsHidden: Bool) {
+        setupRemoveTeamButton(removeIsHidden)
         setupAvatar(avatar: avatar, color: avatarColor)
         setupNameLabel(text: name, color: .black)
         setupCardBackground(backgroundColor: .white)
     }
     
-    public func configureAsCategory(name: String, avatar: String, background: UIColor, isSelected: Bool) {
+    public func configureAsCategory(name: String,
+                                    avatar: String,
+                                    background: UIColor,
+                                    isSelected: Bool) {
         setupAvatar(avatar: avatar, color: .white)
         setupNameLabel(text: name, color: .white)
         setupCardBackground(backgroundColor: background)
         setupCheckmarkImageView(isSelected: isSelected)
     }
     
-    public func configureAsLeaderBoard(name: String, avatar: String, avatarColor: UIColor, score: Int) {
+    public func configureAsLeaderBoard(name: String,
+                                       avatar: String,
+                                       avatarColor: UIColor,
+                                       score: Int) {
         setupAvatar(avatar: avatar, color: avatarColor)
         setupNameLabel(text: name, color: .black)
         setupCardBackground(backgroundColor: .white)
@@ -80,11 +89,11 @@ class CrocodileTableViewCell: UITableViewCell {
         cardBackground.backgroundColor = backgroundColor
     }
     
-    private func setupRemoveTeamButton() {
+    private func setupRemoveTeamButton(_ isHidden: Bool) {
         removeTeamButton.setImage(UIImage(systemName: "xmark"), for: .normal)
         removeTeamButton.tintColor = .black
         removeTeamButton.addTarget(self, action: #selector(removeTeamTarget), for: .touchUpInside)
-        
+        removeTeamButton.isHidden = isHidden
     }
     
     private func setupCheckmarkImageView(isSelected: Bool) {

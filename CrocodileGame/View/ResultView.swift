@@ -1,22 +1,16 @@
 //
-//  GameResultView.swift
+//  ResultView.swift
 //  CrocodileGame
 //
-//  Created by Mikhail Tedeev on 20.04.2023.
+//  Created by Mikhail Tedeev on 21.04.2023.
 //
 
 import UIKit
-
-protocol GameResultViewDelegate: AnyObject {
-    func didTapPlayAgainButton(_ button: UIButton)
-}
-
-final class GameResultView: CustomView {
+final class ResultView: CustomView {
 
     //MARK: - Property
     
-    weak var delegate: GameResultViewDelegate?
-    let teams = GameResultViewController().resultOfTeams
+    let teams = ResultViewController().resultOfTeams
     
     //MARK: - UI Elements
     
@@ -26,18 +20,6 @@ final class GameResultView: CustomView {
         tableView.separatorColor = .clear
         tableView.register(CrocodileTableViewCell.self, forCellReuseIdentifier: "gameResultCell")
         return tableView
-    }()
-    
-    private var playAgainButton: UIButton = {
-        let button = UIButton(type: .system)
-        button.backgroundColor = CrocodileColors.orangeButton.setColor
-        button.setTitle("Играть сначала", for: .normal)
-        button.titleLabel?.font = .systemFont(ofSize: 20)
-        button.layer.cornerRadius = 10
-        button.tintColor = .white
-        button.addTarget(self, action: #selector(playAgainTarget), for: .touchUpInside)
-
-        return button
     }()
     
     override func setViews() {
@@ -54,46 +36,24 @@ final class GameResultView: CustomView {
         background.frame = self.frame
         self.addSubview(background)
     }
-
+    
+    //MARK: Layout
     override func layoutSubviews() {
         addBackground()
-        let subviewsArray: [UIView] = [playAgainButton, tableView]
-        subviewsArray.forEach { ui in
-            self.addSubview(ui)
-            ui.translatesAutoresizingMaskIntoConstraints = false
-        }
+        self.addSubview(tableView)
+        tableView.translatesAutoresizingMaskIntoConstraints = false
         NSLayoutConstraint.activate([
-            
-            //MARK: Layout PlayerReadyButton
-            
-            playAgainButton.bottomAnchor.constraint(equalTo: self.safeAreaLayoutGuide.bottomAnchor),
-            playAgainButton.leadingAnchor.constraint(equalTo: self.leadingAnchor, constant: 14),
-            playAgainButton.trailingAnchor.constraint(equalTo: self.trailingAnchor, constant: -14),
-            playAgainButton.heightAnchor.constraint(equalToConstant: 64),
-            
-            //MARK: Layout TableView
-            
             tableView.topAnchor.constraint(equalTo: self.safeAreaLayoutGuide.topAnchor),
             tableView.leadingAnchor.constraint(equalTo: self.leadingAnchor),
             tableView.trailingAnchor.constraint(equalTo: self.trailingAnchor),
-            tableView.bottomAnchor.constraint(equalTo: playAgainButton.topAnchor)
-            
+            tableView.bottomAnchor.constraint(equalTo: self.safeAreaLayoutGuide.bottomAnchor)
         ])
-        
-    }
-}
-
-//MARK: - Target Actions
-
-extension GameResultView {
-    @objc private func playAgainTarget(_ sender: UIButton) {
-        delegate?.didTapPlayAgainButton(sender)
     }
 }
 
 //MARK: - UITableViewDelegate, UITableViewDataSource
 
-extension GameResultView: UITableViewDelegate, UITableViewDataSource {
+extension ResultView: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         teams.count
     }
@@ -105,7 +65,6 @@ extension GameResultView: UITableViewDelegate, UITableViewDataSource {
                                     avatar: currentItem.avatar,
                                     avatarColor: currentItem.avatarColor.setColor,
                                     score: currentItem.points)
-        
         return cell
     }
     

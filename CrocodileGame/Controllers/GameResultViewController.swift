@@ -11,7 +11,7 @@ final class GameResultViewController: CustomViewController<GameResultView> {
     
     //MARK: - Property
     
-    
+    let resultOfTeams = TeamManager.shared.getTeamsWhoPlay().sorted { $0.points > $1.points }
     
     //MARK: - Life Cycle
     override func viewDidLoad() {
@@ -25,6 +25,7 @@ final class GameResultViewController: CustomViewController<GameResultView> {
 
 extension GameResultViewController: GameResultViewDelegate {
     func didTapPlayAgainButton(_ button: UIButton) {
-        navigationController?.popToRootViewController(animated: true)
+        let resultViewController = ResultViewController()
+        navigationController?.pushViewController(resultViewController, animated: true)
     }
 }

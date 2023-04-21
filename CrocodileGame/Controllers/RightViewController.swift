@@ -9,15 +9,17 @@ import UIKit
 
 class RightViewController: CustomViewController<RightView> {
     
+    var gameManager: GameManager? = nil
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
         self.navigationItem.hidesBackButton = true
         customView.delegate = self
         
-        customView.setTeamAvatar(icon: "🤷🏻", background: CrocodileColors.blue.setColor)
-        customView.setTeamName(name: "Cowboys")
-        customView.setTeamPoints(points: 1)
+        customView.setTeamAvatar(icon: (gameManager?.getCurrentTeam().avatar)!, background: (gameManager?.getCurrentTeam().avatarColor.setColor)!)
+        customView.setTeamName(name: (gameManager?.getCurrentTeam().name)!)
+        customView.setTeamPoints(points: (gameManager?.getCurrentTeam().points)!)
         customView.setNextTeamLabel(team: "Стройняшки")
     }
     
@@ -28,6 +30,8 @@ extension RightViewController: RightViewDelegate {
         let buttonIdentifier = button.restorationIdentifier ?? ""
         
         if buttonIdentifier == "NextTeam" {
+            
+            navigationController?.popToRootViewController(animated: true)
             // Move to GameViewController
         }
     }

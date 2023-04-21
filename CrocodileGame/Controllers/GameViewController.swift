@@ -10,6 +10,8 @@ import AVFoundation
 
 class GameViewController: CustomViewController<GameView> {
     
+    let gameManager = GameManager()
+    
     var secondsLeft = 0
     var countdownTimer = Timer()
     var player: AVAudioPlayer?
@@ -37,8 +39,13 @@ class GameViewController: CustomViewController<GameView> {
         super.viewDidLoad()
         
         customView.delegate = self
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(true)
+        
         setupLabelsFromModel()
-        setupNavigationBar(textLabel: getTeam)
+        setupNavigationBar(textLabel: gameManager.getCurrentTeam().name)
         startCountdownTimer()
     }
     
@@ -117,12 +124,14 @@ extension GameViewController: GameViewDelegate {
             countdownTimer.invalidate()
             playSound(soundName: "RightSound", withExtension: "wav")
             let rightViewController = RightViewController()
+            rightViewController.gameManager = gameManager
             navigationController?.pushViewController(rightViewController, animated: true)
         case "Wrong":
             print("Open WrongView")
             countdownTimer.invalidate()
             playSound(soundName: "WrongSound", withExtension: "wav")
             let wrongViewController = WrongViewController()
+            wrongViewController.gameManager = gameManager
             navigationController?.pushViewController(wrongViewController, animated: true)
         case "Reset" :
             showResetAlertController()

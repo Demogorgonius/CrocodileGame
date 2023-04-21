@@ -210,7 +210,7 @@ class WrongView: CustomView {
             greenCentralViewLabel2.topAnchor.constraint(equalTo: greenCentralViewLabel1.bottomAnchor, constant: 25),
             
             greenCentralViewStar.centerXAnchor.constraint(equalTo: greenCentralView.centerXAnchor),
-            greenCentralViewStar.topAnchor.constraint(equalTo: greenCentralViewLabel2.bottomAnchor, constant: 5),
+            greenCentralViewStar.topAnchor.constraint(equalTo: greenCentralViewLabel2.bottomAnchor, constant: 10),
             greenCentralViewStar.heightAnchor.constraint(equalToConstant: 100),
             greenCentralViewStar.widthAnchor.constraint(equalToConstant: 110),
             

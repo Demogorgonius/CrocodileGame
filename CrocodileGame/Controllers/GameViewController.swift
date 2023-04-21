@@ -10,14 +10,22 @@ import AVFoundation
 
 class GameViewController: CustomViewController<GameView> {
     
+    let gameManager = GameManager()
+    
     var secondsLeft = 0
     var countdownTimer = Timer()
     var player: AVAudioPlayer?
     
     // For test
+    var getTeam: String {
+        get {
+            return ["Ковбои", "Стройняшки", "Красотки"].randomElement() ?? ""
+        }
+    }
+    
     var getWord: String {
         get {
-            return ["Яблоко", "СОбака", "Машина", "Картошка"].randomElement() ?? ""
+            return ["Яблоко", "Собака", "Машина", "Картошка"].randomElement() ?? ""
         }
     }
     
@@ -31,7 +39,13 @@ class GameViewController: CustomViewController<GameView> {
         super.viewDidLoad()
         
         customView.delegate = self
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(true)
+        
         setupLabelsFromModel()
+        setupNavigationBar(textLabel: gameManager.getCurrentTeam().name)
         startCountdownTimer()
     }
     
@@ -66,6 +80,7 @@ class GameViewController: CustomViewController<GameView> {
         let actionYes = UIAlertAction(
             title: "Да",
             style: .destructive) { (action) in
+                self.countdownTimer.invalidate()
                 //            let mainViewController = MainViewController()
                 //            navigationController?.pushViewController(mainViewController, animated: true)
             }
@@ -106,14 +121,18 @@ extension GameViewController: GameViewDelegate {
         switch buttonIdentifier {
         case "Right":
             print("+1 point, Open RightView")
+            countdownTimer.invalidate()
             playSound(soundName: "RightSound", withExtension: "wav")
-//            let rightViewController = RightViewController()
-//            navigationController?.pushViewController(rightViewController, animated: true)
+            let rightViewController = RightViewController()
+            rightViewController.gameManager = gameManager
+            navigationController?.pushViewController(rightViewController, animated: true)
         case "Wrong":
             print("Open WrongView")
+            countdownTimer.invalidate()
             playSound(soundName: "WrongSound", withExtension: "wav")
-//            let wrongViewController = WrongViewController()
-//            navigationController?.pushViewController(wrongViewController, animated: true)
+            let wrongViewController = WrongViewController()
+            wrongViewController.gameManager = gameManager
+            navigationController?.pushViewController(wrongViewController, animated: true)
         case "Reset" :
             showResetAlertController()
         default:

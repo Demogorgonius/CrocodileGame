@@ -7,8 +7,9 @@
 
 struct Team {
     let name: String
-    let points: Int
-    let pointsLifetime: Int
+    var points: Int
+    var pointsLifetime: Int
+    var didPlayNextGame: Bool
     let avatar: Character
     let avatarColor: CrocodileColors
 }

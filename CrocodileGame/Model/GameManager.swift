@@ -8,15 +8,83 @@
 import Foundation
 
 class GameManager {
-    var totalRounds = 0
+    
+    let teamManager = TeamManager()
+    
+    let conditionals = [
+        "Объясни с помощью слов",
+        "Объясни с помощью жестов",
+        "Объясни с помощью рисунка",
+        "Объясняй со злостью",
+        "Объясняй с помощью мимики",
+        "Объясняй вульгарно",
+        "Объясняй сексуально",
+    ]
     var teamsWhoPlay: [Team] = []
+    var wordsForGame: [String] = []
+    var currentRound = 1
+    var totalRound = 0
+    var isLastRound = false
+    var currentTeamIndex = 0
     
     init() {
-        print("Game manager init")
+        readWordsFromCategory()
+        readTeamsFromTeamManager()
     }
     
     func getCurrentTeam() -> Team {
+        return teamsWhoPlay[currentTeamIndex]
+    }
+    
+    func getNextTeam() -> Team {
+        if currentTeamIndex != teamsWhoPlay.count - 1 {
+            return teamsWhoPlay[currentTeamIndex + 1]
+        } else {
+            return teamsWhoPlay[0]
+        }
+    }
+    
+    func getWord() -> Word {
+        var word = ""
         
-        return Team(name: "Dancers", points: 0, pointsLifetime: 0, didPlayNextGame: true, avatar: "💃🏻", avatarColor: .yellow)
+        if (currentRound - 1) < wordsForGame.count {
+            word = wordsForGame[currentRound - 1]
+        } else {
+            word = wordsForGame.randomElement()!
+        }
+        
+        let conditionals = conditionals.randomElement()!
+        return Word(word: word, conditionals: conditionals)
+    }
+    
+    func rightAnswer() {
+        teamManager.addPointToTeam(teamsWhoPlay[currentTeamIndex].name)
+        teamsWhoPlay[currentTeamIndex].points += 1
+    }
+    
+    func changeTeam() {
+        if currentTeamIndex != teamsWhoPlay.count - 1 {
+            currentTeamIndex += 1
+        } else {
+            currentTeamIndex = 0
+        }
+        
+        if currentRound == totalRound - 1 {
+            isLastRound = true
+        }
+        
+        if currentRound < totalRound {
+            currentRound += 1
+        }
+    }
+    
+    func readWordsFromCategory() {
+        // for test
+        wordsForGame = ["Яблоко", "Машина", "Стул", "Рыцарь", "Ковбой"]
+    }
+    
+    func readTeamsFromTeamManager() {
+        teamsWhoPlay = teamManager.getTeamsWhoPlay()
+        totalRound = teamsWhoPlay.count * 2
     }
 }

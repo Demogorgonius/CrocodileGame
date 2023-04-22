@@ -14,7 +14,9 @@ final class CategoryStorage {
         var container = [String]()
         all.forEach { category in
             if category.selected {
-                container.append(category.name)
+                category.names.forEach { word in
+                    container.append(word)
+                }
             }
         }
         let randomized = Array(Set(container))

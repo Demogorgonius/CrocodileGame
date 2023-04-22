@@ -48,7 +48,9 @@ class StartViewController: UIViewController {
         element.titleLabel?.font = .systemFont(ofSize: 20)
         element.heightAnchor.constraint(equalToConstant: 63).isActive = true
         element.layer.cornerRadius = 10
+        element.addTarget(self, action: #selector(rulesButtonTapped), for: .touchUpInside)
         element.translatesAutoresizingMaskIntoConstraints = false
+        
         return element
     }()
     
@@ -115,6 +117,13 @@ class StartViewController: UIViewController {
         if let navigationVC = navigationController {
             let resultVC = ResultViewController()
             navigationVC.pushViewController(resultVC, animated: true)
+        }
+    }
+    
+    @objc func rulesButtonTapped(_ sender: UIButton) {
+        if let navigationVC = navigationController {
+            let rulesVC = RulesViewController()
+            navigationVC.pushViewController(rulesVC, animated: true)
         }
     }
     

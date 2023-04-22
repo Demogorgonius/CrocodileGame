@@ -9,35 +9,49 @@
 /* Begin PBXBuildFile section */
 		A56AAEB029EC8C6800C3F04D /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A56AAEAF29EC8C6800C3F04D /* AppDelegate.swift */; };
 		A56AAEB229EC8C6800C3F04D /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A56AAEB129EC8C6800C3F04D /* SceneDelegate.swift */; };
-		A56AAEB429EC8C6800C3F04D /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A56AAEB329EC8C6800C3F04D /* ViewController.swift */; };
 		A56AAEB929EC8C6A00C3F04D /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A56AAEB829EC8C6A00C3F04D /* Assets.xcassets */; };
 		A56AAEBC29EC8C6A00C3F04D /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A56AAEBA29EC8C6A00C3F04D /* LaunchScreen.storyboard */; };
 		C84E4F1229EEB2ED00C5DB8B /* CrocodileTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C84E4F1129EEB2ED00C5DB8B /* CrocodileTableViewCell.swift */; };
-		C84E4F1429EEB97D00C5DB8B /* Team.swift in Sources */ = {isa = PBXBuildFile; fileRef = C84E4F1329EEB97D00C5DB8B /* Team.swift */; };
 		C84E4F1629EEE12000C5DB8B /* CategoryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C84E4F1529EEE12000C5DB8B /* CategoryViewController.swift */; };
-		C84E4F1829EEE15100C5DB8B /* Category.swift in Sources */ = {isa = PBXBuildFile; fileRef = C84E4F1729EEE15100C5DB8B /* Category.swift */; };
 		C84E4F1A29EEE19900C5DB8B /* CrocodileColors.swift in Sources */ = {isa = PBXBuildFile; fileRef = C84E4F1929EEE19900C5DB8B /* CrocodileColors.swift */; };
+		C84E4F2029EF1CF600C5DB8B /* CustomViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C84E4F1F29EF1CF600C5DB8B /* CustomViewController.swift */; };
+		C84E4F2329EF1D0A00C5DB8B /* Category.swift in Sources */ = {isa = PBXBuildFile; fileRef = C84E4F2129EF1D0A00C5DB8B /* Category.swift */; };
+		C84E4F2429EF1D0A00C5DB8B /* Team.swift in Sources */ = {isa = PBXBuildFile; fileRef = C84E4F2229EF1D0A00C5DB8B /* Team.swift */; };
+		C84E4F2629EF1D3500C5DB8B /* CustomView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C84E4F2529EF1D3500C5DB8B /* CustomView.swift */; };
+		C84E4F2829F0432900C5DB8B /* CategoryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C84E4F2729F0432900C5DB8B /* CategoryView.swift */; };
+		C84E4F2A29F1539800C5DB8B /* GameResultViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C84E4F2929F1539800C5DB8B /* GameResultViewController.swift */; };
+		C84E4F2C29F1573F00C5DB8B /* GameResultView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C84E4F2B29F1573F00C5DB8B /* GameResultView.swift */; };
+		C84E4F2E29F18EEE00C5DB8B /* CategoryStorage.swift in Sources */ = {isa = PBXBuildFile; fileRef = C84E4F2D29F18EEE00C5DB8B /* CategoryStorage.swift */; };
+		C84E4F3029F29EB800C5DB8B /* TeamManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = C84E4F2F29F29EB800C5DB8B /* TeamManager.swift */; };
+		C84E4F3229F2DB4000C5DB8B /* ResultViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C84E4F3129F2DB4000C5DB8B /* ResultViewController.swift */; };
+		C84E4F3429F2DB5700C5DB8B /* ResultView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C84E4F3329F2DB5700C5DB8B /* ResultView.swift */; };
 		C86FE59829EE95E8003D9D2E /* TeamViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C86FE59729EE95E8003D9D2E /* TeamViewController.swift */; };
 		C86FE59C29EE96E8003D9D2E /* TeamView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C86FE59B29EE96E8003D9D2E /* TeamView.swift */; };
-		C86FE59E29EE9C6B003D9D2E /* View.swift in Sources */ = {isa = PBXBuildFile; fileRef = C86FE59D29EE9C6B003D9D2E /* View.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		A56AAEAC29EC8C6800C3F04D /* CrocodileGame.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CrocodileGame.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		A56AAEAF29EC8C6800C3F04D /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		A56AAEB129EC8C6800C3F04D /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
-		A56AAEB329EC8C6800C3F04D /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		A56AAEB829EC8C6A00C3F04D /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		A56AAEBB29EC8C6A00C3F04D /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		A56AAEBD29EC8C6A00C3F04D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		C84E4F1129EEB2ED00C5DB8B /* CrocodileTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CrocodileTableViewCell.swift; sourceTree = "<group>"; };
-		C84E4F1329EEB97D00C5DB8B /* Team.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = Team.swift; path = CrocodileGame/View/Team.swift; sourceTree = SOURCE_ROOT; };
 		C84E4F1529EEE12000C5DB8B /* CategoryViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryViewController.swift; sourceTree = "<group>"; };
-		C84E4F1729EEE15100C5DB8B /* Category.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = Category.swift; path = CrocodileGame/Controllers/Category.swift; sourceTree = SOURCE_ROOT; };
 		C84E4F1929EEE19900C5DB8B /* CrocodileColors.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = CrocodileColors.swift; path = CrocodileGame/CrocodileColors.swift; sourceTree = SOURCE_ROOT; };
+		C84E4F1F29EF1CF600C5DB8B /* CustomViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomViewController.swift; sourceTree = "<group>"; };
+		C84E4F2129EF1D0A00C5DB8B /* Category.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Category.swift; sourceTree = "<group>"; };
+		C84E4F2229EF1D0A00C5DB8B /* Team.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Team.swift; sourceTree = "<group>"; };
+		C84E4F2529EF1D3500C5DB8B /* CustomView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomView.swift; sourceTree = "<group>"; };
+		C84E4F2729F0432900C5DB8B /* CategoryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryView.swift; sourceTree = "<group>"; };
+		C84E4F2929F1539800C5DB8B /* GameResultViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameResultViewController.swift; sourceTree = "<group>"; };
+		C84E4F2B29F1573F00C5DB8B /* GameResultView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameResultView.swift; sourceTree = "<group>"; };
+		C84E4F2D29F18EEE00C5DB8B /* CategoryStorage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryStorage.swift; sourceTree = "<group>"; };
+		C84E4F2F29F29EB800C5DB8B /* TeamManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TeamManager.swift; sourceTree = "<group>"; };
+		C84E4F3129F2DB4000C5DB8B /* ResultViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResultViewController.swift; sourceTree = "<group>"; };
+		C84E4F3329F2DB5700C5DB8B /* ResultView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResultView.swift; sourceTree = "<group>"; };
 		C86FE59729EE95E8003D9D2E /* TeamViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TeamViewController.swift; sourceTree = "<group>"; };
 		C86FE59B29EE96E8003D9D2E /* TeamView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TeamView.swift; sourceTree = "<group>"; };
-		C86FE59D29EE9C6B003D9D2E /* View.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = View.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -87,8 +101,10 @@
 		A56AAEC329EC8D9F00C3F04D /* Model */ = {
 			isa = PBXGroup;
 			children = (
-				C84E4F1329EEB97D00C5DB8B /* Team.swift */,
-				C84E4F1729EEE15100C5DB8B /* Category.swift */,
+				C84E4F2129EF1D0A00C5DB8B /* Category.swift */,
+				C84E4F2D29F18EEE00C5DB8B /* CategoryStorage.swift */,
+				C84E4F2229EF1D0A00C5DB8B /* Team.swift */,
+				C84E4F2F29F29EB800C5DB8B /* TeamManager.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -96,27 +112,24 @@
 		A56AAEC429EC8DA700C3F04D /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
-				A56AAEC529EC8DD900C3F04D /* Onbording */,
-				A56AAEB329EC8C6800C3F04D /* ViewController.swift */,
+				C84E4F1F29EF1CF600C5DB8B /* CustomViewController.swift */,
 				C86FE59729EE95E8003D9D2E /* TeamViewController.swift */,
 				C84E4F1529EEE12000C5DB8B /* CategoryViewController.swift */,
+				C84E4F2929F1539800C5DB8B /* GameResultViewController.swift */,
+				C84E4F3129F2DB4000C5DB8B /* ResultViewController.swift */,
 			);
 			path = Controllers;
-			sourceTree = "<group>";
-		};
-		A56AAEC529EC8DD900C3F04D /* Onbording */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = Onbording;
 			sourceTree = "<group>";
 		};
 		C86FE59A29EE96CB003D9D2E /* View */ = {
 			isa = PBXGroup;
 			children = (
-				C86FE59D29EE9C6B003D9D2E /* View.swift */,
-				C86FE59B29EE96E8003D9D2E /* TeamView.swift */,
+				C84E4F2529EF1D3500C5DB8B /* CustomView.swift */,
 				C84E4F1129EEB2ED00C5DB8B /* CrocodileTableViewCell.swift */,
+				C86FE59B29EE96E8003D9D2E /* TeamView.swift */,
+				C84E4F2729F0432900C5DB8B /* CategoryView.swift */,
+				C84E4F2B29F1573F00C5DB8B /* GameResultView.swift */,
+				C84E4F3329F2DB5700C5DB8B /* ResultView.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -191,17 +204,24 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				A56AAEB429EC8C6800C3F04D /* ViewController.swift in Sources */,
 				C84E4F1A29EEE19900C5DB8B /* CrocodileColors.swift in Sources */,
-				C84E4F1829EEE15100C5DB8B /* Category.swift in Sources */,
+				C84E4F2429EF1D0A00C5DB8B /* Team.swift in Sources */,
+				C84E4F2E29F18EEE00C5DB8B /* CategoryStorage.swift in Sources */,
+				C84E4F2829F0432900C5DB8B /* CategoryView.swift in Sources */,
+				C84E4F2029EF1CF600C5DB8B /* CustomViewController.swift in Sources */,
+				C84E4F2A29F1539800C5DB8B /* GameResultViewController.swift in Sources */,
 				C86FE59829EE95E8003D9D2E /* TeamViewController.swift in Sources */,
-				C86FE59E29EE9C6B003D9D2E /* View.swift in Sources */,
 				C86FE59C29EE96E8003D9D2E /* TeamView.swift in Sources */,
-				C84E4F1429EEB97D00C5DB8B /* Team.swift in Sources */,
+				C84E4F3229F2DB4000C5DB8B /* ResultViewController.swift in Sources */,
 				C84E4F1229EEB2ED00C5DB8B /* CrocodileTableViewCell.swift in Sources */,
 				A56AAEB029EC8C6800C3F04D /* AppDelegate.swift in Sources */,
+				C84E4F3429F2DB5700C5DB8B /* ResultView.swift in Sources */,
 				C84E4F1629EEE12000C5DB8B /* CategoryViewController.swift in Sources */,
+				C84E4F2629EF1D3500C5DB8B /* CustomView.swift in Sources */,
 				A56AAEB229EC8C6800C3F04D /* SceneDelegate.swift in Sources */,
+				C84E4F2329EF1D0A00C5DB8B /* Category.swift in Sources */,
+				C84E4F3029F29EB800C5DB8B /* TeamManager.swift in Sources */,
+				C84E4F2C29F1573F00C5DB8B /* GameResultView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

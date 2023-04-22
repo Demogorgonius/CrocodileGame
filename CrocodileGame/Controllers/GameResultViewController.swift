@@ -18,6 +18,7 @@ final class GameResultViewController: CustomViewController<GameResultView> {
         super.viewDidLoad()
         setupNavigationBar(textLabel: "Результаты")
         customView.delegate = self
+        navigationItem.hidesBackButton = true
     }
 }
 

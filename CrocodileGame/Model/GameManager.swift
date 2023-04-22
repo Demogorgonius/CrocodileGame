@@ -9,8 +9,8 @@ import Foundation
 
 class GameManager {
     
-    let teamManager = TeamManager()
-    let categoryStorage = CategoryStorage()
+    let teamManager = TeamManager.shared
+    let categoryStorage = CategoryStorage.shared
     
     let conditionals = [
         "Объясни с помощью слов",

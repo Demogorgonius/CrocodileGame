@@ -6,7 +6,7 @@
 //
 
 struct Team: Codable {
-    let name: String
+    var name: String
     var points: Int
     var pointsLifetime: Int
     var didPlayNextGame: Bool

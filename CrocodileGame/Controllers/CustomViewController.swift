@@ -26,6 +26,7 @@ extension UIViewController {
         label.textAlignment = .center
         navigationItem.titleView = label
         navigationItem.backButtonTitle = ""
+        navigationController?.navigationBar.tintColor = .black
     }
     
     func addBackground() {

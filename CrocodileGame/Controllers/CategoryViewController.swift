@@ -38,6 +38,7 @@ extension CategoryViewController: CategoryViewDelegate {
     }
     
     func startGameButton(_ button: UIButton) {
+        guard !categories.getWordsForGame().isEmpty else { return }
         let gameViewController = GameViewController()
         navigationController?.pushViewController(gameViewController, animated: true)
     }

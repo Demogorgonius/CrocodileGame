@@ -96,6 +96,7 @@ class StartViewController: UIViewController {
         setUpView()
         
         setUpConstrain()
+        setupNavigationBar(textLabel: "")
         
     }
     

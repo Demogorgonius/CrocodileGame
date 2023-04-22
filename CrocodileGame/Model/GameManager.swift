@@ -91,6 +91,6 @@ class GameManager {
     func readTeamsFromTeamManager() {
         teamManager.startGame()
         teamsWhoPlay = teamManager.getTeamsWhoPlay()
-        totalRound = teamsWhoPlay.count * 2
+        totalRound = teamsWhoPlay.count * 5
     }
 }

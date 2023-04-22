@@ -29,12 +29,11 @@ final class TeamView: CustomView {
         let tableView = UITableView()
         tableView.backgroundColor = .clear
         tableView.separatorColor = .clear
-        tableView
         tableView.register(CrocodileTableViewCell.self, forCellReuseIdentifier: "teamCell")
         return tableView
     }()
     
-    private var addTeamButton: UIButton = {
+    private lazy var addTeamButton: UIButton = {
         let button = UIButton(type: .system)
         button.backgroundColor = CrocodileColors.orangeButton.setColor
         button.setTitle("Добавить команду", for: .normal)
@@ -45,7 +44,7 @@ final class TeamView: CustomView {
         return button
     }()
 
-    private var playersReadyButton: UIButton = {
+    private lazy var playersReadyButton: UIButton = {
         let button = UIButton(type: .system)
         button.backgroundColor = CrocodileColors.greenButton.setColor
         button.setTitle("Игроки готовы", for: .normal)

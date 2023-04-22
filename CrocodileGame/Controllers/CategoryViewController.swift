@@ -38,7 +38,15 @@ extension CategoryViewController: CategoryViewDelegate {
     }
     
     func startGameButton(_ button: UIButton) {
-        guard !categories.getWordsForGame().isEmpty else { return }
+//        guard !categories.getWordsForGame().isEmpty else { return }
+        if categories.getWordsForGame().isEmpty {
+            
+            let alert = UIAlertController(title: "Внимание!", message: "Выберете хотя бы одну категорию!", preferredStyle: .alert)
+            let okAction = UIAlertAction(title: "Ok", style: .cancel)
+            alert.addAction(okAction)
+            present(alert, animated: true)
+            return
+        }
         let gameViewController = GameViewController()
         navigationController?.pushViewController(gameViewController, animated: true)
     }

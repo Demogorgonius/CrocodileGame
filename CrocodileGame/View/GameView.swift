@@ -50,6 +50,8 @@ class GameView: CustomView {
         let label = UILabel()
         label.text = "Картошка"
         label.font = UIFont.italicSystemFont(ofSize: 48)
+        label.adjustsFontSizeToFitWidth = true
+        label.minimumScaleFactor = 0.5
         return label
     }()
     

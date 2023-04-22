@@ -29,7 +29,7 @@ final class CategoryView: CustomView {
         return tableView
     }()
     
-    private var startGameButton: UIButton = {
+    private lazy var startGameButton: UIButton = {
         let button = UIButton(type: .system)
         button.backgroundColor = CrocodileColors.greenButton.setColor
         button.setTitle("Начать игру", for: .normal)

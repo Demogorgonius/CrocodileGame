@@ -28,7 +28,7 @@ final class GameResultView: CustomView {
         return tableView
     }()
     
-    private var playAgainButton: UIButton = {
+    private lazy var playAgainButton: UIButton = {
         let button = UIButton(type: .system)
         button.backgroundColor = CrocodileColors.orangeButton.setColor
         button.setTitle("Играть сначала", for: .normal)

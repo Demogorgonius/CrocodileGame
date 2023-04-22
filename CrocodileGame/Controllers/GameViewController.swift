@@ -47,7 +47,10 @@ class GameViewController: CustomViewController<GameView> {
             secondsLeft -= 1
             customView.setTimerLabelText(text: String(format: "%02d:%02d", 0, secondsLeft))
             if secondsLeft == 12 {
-                playSound(soundName: "TimerSound", withExtension: "mp3")
+//                playSound(soundName: "TimerSound", withExtension: "wav")
+                DispatchQueue.main.async {
+                    self.playSound(soundName: "TimerSound", withExtension: "wav")
+                }
             }
         } else {
             countdownTimer.invalidate()
@@ -103,13 +106,17 @@ extension GameViewController: GameViewDelegate {
         case "Right":
             gameManager.rightAnswer()
             countdownTimer.invalidate()
-            playSound(soundName: "RightSound", withExtension: "wav")
+            DispatchQueue.main.async {
+                self.playSound(soundName: "RightSound", withExtension: "wav")
+            }
             let rightViewController = RightViewController()
             rightViewController.gameManager = gameManager
             navigationController?.pushViewController(rightViewController, animated: true)
         case "Wrong":
             countdownTimer.invalidate()
-            playSound(soundName: "WrongSound", withExtension: "wav")
+            DispatchQueue.main.async {
+                self.playSound(soundName: "WrongSound", withExtension: "wav")
+            }
             let wrongViewController = WrongViewController()
             wrongViewController.gameManager = gameManager
             navigationController?.pushViewController(wrongViewController, animated: true)

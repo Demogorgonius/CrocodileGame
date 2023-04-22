@@ -13,3 +13,23 @@ struct Team: Codable {
     let avatar: String
     let avatarColor: CrocodileColors
 }
+
+struct TeamStorage {
+    var allTeams = [
+    Team(name: "Тигры",
+         points: Int,
+         pointsLifetime: Int,
+         avatar: #imageLiteral(resourceName: "tigers1"),
+         avatarColor: CrocodileColors.yellow),
+    Team(name: "Акулы",
+         points: Int,
+         pointsLifetime: Int,
+         avatar: #imageLiteral(resourceName: "sharks"),
+         avatarColor: CrocodileColors.yellow),
+    Team(name: "Медведи",
+         points: Int,
+         pointsLifetime: Int,
+         avatar: #imageLiteral(resourceName: "bears"),
+         avatarColor: CrocodileColors.yellow),
+    ]
+}

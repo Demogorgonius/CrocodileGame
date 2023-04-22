@@ -34,6 +34,7 @@
 		A57FC4F629F2FE1300421F59 /* WrongViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A57FC4F229F2FE1300421F59 /* WrongViewController.swift */; };
 		A57FC4F729F2FE1300421F59 /* RightViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A57FC4F329F2FE1300421F59 /* RightViewController.swift */; };
 		A5DF442329F424A000491528 /* TimerSound.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = A5DF442229F4249F00491528 /* TimerSound.mp3 */; };
+		A5DF442529F461AB00491528 /* RulesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5DF442429F461AB00491528 /* RulesViewController.swift */; };
 		C84E4F1229EEB2ED00C5DB8B /* CrocodileTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C84E4F1129EEB2ED00C5DB8B /* CrocodileTableViewCell.swift */; };
 		C84E4F1629EEE12000C5DB8B /* CategoryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C84E4F1529EEE12000C5DB8B /* CategoryViewController.swift */; };
 		C84E4F1A29EEE19900C5DB8B /* CrocodileColors.swift in Sources */ = {isa = PBXBuildFile; fileRef = C84E4F1929EEE19900C5DB8B /* CrocodileColors.swift */; };
@@ -72,6 +73,7 @@
 		A57FC4F229F2FE1300421F59 /* WrongViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WrongViewController.swift; sourceTree = "<group>"; };
 		A57FC4F329F2FE1300421F59 /* RightViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RightViewController.swift; sourceTree = "<group>"; };
 		A5DF442229F4249F00491528 /* TimerSound.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = TimerSound.mp3; sourceTree = "<group>"; };
+		A5DF442429F461AB00491528 /* RulesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RulesViewController.swift; sourceTree = "<group>"; };
 		C84E4F1129EEB2ED00C5DB8B /* CrocodileTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CrocodileTableViewCell.swift; sourceTree = "<group>"; };
 		C84E4F1529EEE12000C5DB8B /* CategoryViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryViewController.swift; sourceTree = "<group>"; };
 		C84E4F1929EEE19900C5DB8B /* CrocodileColors.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = CrocodileColors.swift; path = CrocodileGame/CrocodileColors.swift; sourceTree = SOURCE_ROOT; };
@@ -169,6 +171,7 @@
 				A57FC4F229F2FE1300421F59 /* WrongViewController.swift */,
 				84E8580D29F05B1F0099EE9C /* GameViewController.swift */,
 				A57FC4DE29F2FAE700421F59 /* StartViewController.swift */,
+				A5DF442429F461AB00491528 /* RulesViewController.swift */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -277,6 +280,7 @@
 				C84E4F3A29F408AA00C5DB8B /* Word.swift in Sources */,
 				84E8580C29F05B0D0099EE9C /* GameView.swift in Sources */,
 				A5109E3B29F164740023E37E /* CustomView.swift in Sources */,
+				A5DF442529F461AB00491528 /* RulesViewController.swift in Sources */,
 				C84E4F1229EEB2ED00C5DB8B /* CrocodileTableViewCell.swift in Sources */,
 				A56AAEB029EC8C6800C3F04D /* AppDelegate.swift in Sources */,
 				A57FC4F729F2FE1300421F59 /* RightViewController.swift in Sources */,

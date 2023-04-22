@@ -6,7 +6,7 @@
 //
 import UIKit
 
-class ViewController: UIViewController {
+class RulesViewController: UIViewController {
     
     let scrollView = UIScrollView()
     let contentView = UIView()

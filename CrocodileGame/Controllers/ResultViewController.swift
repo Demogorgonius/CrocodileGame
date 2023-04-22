@@ -11,7 +11,7 @@ final class ResultViewController: CustomViewController<ResultView> {
     
     //MARK: - Property
     
-    let resultOfTeams = TeamManager.shared.getTeams().sorted { $0.points > $1.points }
+    let resultOfTeams = TeamManager.shared.getTeams().sorted { $0.pointsLifetime > $1.pointsLifetime }
     
     //MARK: - Life Cycle
     override func viewDidLoad() {

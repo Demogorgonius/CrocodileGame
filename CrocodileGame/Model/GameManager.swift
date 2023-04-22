@@ -10,6 +10,7 @@ import Foundation
 class GameManager {
     
     let teamManager = TeamManager()
+    let categoryStorage = CategoryStorage()
     
     let conditionals = [
         "Объясни с помощью слов",
@@ -79,12 +80,11 @@ class GameManager {
     }
     
     func readWordsFromCategory() {
-        // for test
-        wordsForGame = ["Яблоко", "Машина", "Стул", "Рыцарь", "Ковбой"]
+        wordsForGame = categoryStorage.getWordsForGame()
     }
     
     func readTeamsFromTeamManager() {
         teamsWhoPlay = teamManager.getTeamsWhoPlay()
-        totalRound = teamsWhoPlay.count * 2
+        totalRound = teamsWhoPlay.count * 5
     }
 }

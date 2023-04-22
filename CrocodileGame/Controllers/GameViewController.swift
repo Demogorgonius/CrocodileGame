@@ -20,6 +20,8 @@ class GameViewController: CustomViewController<GameView> {
         super.viewDidLoad()
         
         customView.delegate = self
+        self.navigationItem.hidesBackButton = true
+        navigationController?.interactivePopGestureRecognizer?.isEnabled = false
     }
     
     override func viewWillAppear(_ animated: Bool) {

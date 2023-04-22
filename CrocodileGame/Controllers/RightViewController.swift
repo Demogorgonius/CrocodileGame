@@ -15,6 +15,7 @@ class RightViewController: CustomViewController<RightView> {
         super.viewDidLoad()
         
         self.navigationItem.hidesBackButton = true
+        navigationController?.interactivePopGestureRecognizer?.isEnabled = false
         customView.delegate = self
         
         customView.setTeamAvatar(icon: (gameManager?.getCurrentTeam().avatar)!, background: (gameManager?.getCurrentTeam().avatarColor.setColor)!)

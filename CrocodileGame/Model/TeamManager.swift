@@ -145,7 +145,7 @@ final class TeamManager {
     func endGame() {
         let updatedTeam = getTeams().map { team -> Team in
             var modify = team
-            modify.pointsLifetime += modify.points
+            modify.pointsLifetime += team.points
             return modify
         }
         saveTeams(teams: updatedTeam)

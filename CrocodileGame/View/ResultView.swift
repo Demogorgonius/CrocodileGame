@@ -24,7 +24,7 @@ final class ResultView: CustomView {
     
     override func setViews() {
         super.setViews()
-        
+        print(teams)
         tableView.delegate = self
         tableView.dataSource = self
         

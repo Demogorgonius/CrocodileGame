@@ -21,7 +21,6 @@ final class CrocodileTableViewCell: UITableViewCell {
     private var nameLabel = UILabel()
     private var removeTeamButton = UIButton()
     private var checkmarkImageView = UIImageView()
-    private var scoreView = UIView()
     private var scorePointsLabel = UILabel()
     private var scoreLabel = UILabel()
     
@@ -58,6 +57,7 @@ final class CrocodileTableViewCell: UITableViewCell {
         setupNameLabel(text: name, color: .white)
         setupCardBackground(backgroundColor: background)
         setupCheckmarkImageView(isSelected: isSelected)
+        removeTeamButton.isHidden = true
     }
     
     public func configureAsLeaderBoard(name: String,
@@ -100,6 +100,7 @@ final class CrocodileTableViewCell: UITableViewCell {
     private func setupCheckmarkImageView(isSelected: Bool) {
         checkmarkImageView.image = UIImage(systemName: "checkmark.circle.fill")
         checkmarkImageView.tintColor = .white
+        checkmarkImageView.isUserInteractionEnabled = true
         if isSelected {
             checkmarkImageView.isHidden = false
         } else {

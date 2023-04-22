@@ -23,6 +23,7 @@ class StartViewController: UIViewController {
         element.backgroundColor = UIColor(red: 0.45, green: 0.65, blue: 0.19, alpha: 1.00)
         element.tintColor = .white
         element.setTitle("Старт игры", for: .normal)
+        element.titleLabel?.font = .systemFont(ofSize: 20)
         element.layer.cornerRadius = 10
         element.addTarget(self, action: #selector(startButtonTapped), for: .touchUpInside)
         element.translatesAutoresizingMaskIntoConstraints = false
@@ -44,6 +45,7 @@ class StartViewController: UIViewController {
         element.backgroundColor = UIColor(red: 0.45, green: 0.65, blue: 0.19, alpha: 1.00)
         element.tintColor = .white
         element.setTitle("Правила", for: .normal)
+        element.titleLabel?.font = .systemFont(ofSize: 20)
         element.heightAnchor.constraint(equalToConstant: 63).isActive = true
         element.layer.cornerRadius = 10
         element.translatesAutoresizingMaskIntoConstraints = false
@@ -55,6 +57,7 @@ class StartViewController: UIViewController {
         element.backgroundColor = UIColor(red: 0.98, green: 0.47, blue: 0.00, alpha: 1.00)
         element.tintColor = .white
         element.setTitle("Результаты", for: .normal)
+        element.titleLabel?.font = .systemFont(ofSize: 20)
         element.heightAnchor.constraint(equalToConstant: 63).isActive = true
         element.layer.cornerRadius = 10
         element.addTarget(self, action: #selector(resultButtonTapped), for: .touchUpInside)

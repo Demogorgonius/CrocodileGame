@@ -49,7 +49,7 @@ class GameViewController: CustomViewController<GameView> {
             if secondsLeft == 12 {
 //                playSound(soundName: "TimerSound", withExtension: "wav")
                 DispatchQueue.main.async {
-                    self.playSound(soundName: "TimerSound", withExtension: "wav")
+                    self.playSound(soundName: "TimerSound", withExtension: "mp3")
                 }
             }
         } else {

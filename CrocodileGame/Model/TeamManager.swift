@@ -89,6 +89,24 @@ final class TeamManager {
         }
     }
     
+    func renameTeam(_ nameTeam: String, newName: String) {
+        let allTeams = getTeams()
+        guard !allTeams.contains(where: { team in
+            team.name == newName
+        }) else { return }
+        let updatedTeam = allTeams.map { team -> Team in
+            if team.name == nameTeam {
+                var modify = team
+                modify.name = newName
+                return modify
+            } else {
+                return team
+            }
+            
+        }
+        saveTeams(teams: updatedTeam)
+    }
+    
     /// Убираем команду из списка играющих в эту игру
     func removeTeamFromWhoPlay(_ name: String) {
         let updatedTeam = getTeams().map { team -> Team in

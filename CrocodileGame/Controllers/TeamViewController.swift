@@ -25,6 +25,10 @@ final class TeamViewController: CustomViewController<TeamView> {
 //MARK: - Target Actions
 
 extension TeamViewController: TeamViewDelegate {
+    func didTapRenameCell(_ alertController: UIAlertController) {
+        present(alertController, animated: true)
+    }
+    
     func didTapAddTeamButton(_ alertController: UIAlertController) {
         present(alertController, animated: true)
     }

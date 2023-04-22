@@ -17,7 +17,8 @@ final class CategoryView: CustomView {
     //MARK: - Property
     
     weak var delegate: CategoryViewDelegate?
-    var categories = CategoryStorage.shared.all
+    private var categories = CategoryStorage.shared.all
+    private var isCategorySelected = !CategoryStorage.shared.getWordsForGame().isEmpty
     
     //MARK: - UI Elements
     
@@ -108,6 +109,11 @@ extension CategoryView: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         delegate?.cellDidSelected(indexPath)
         categories = CategoryStorage.shared.all
+        if isCategorySelected {
+            startGameButton.backgroundColor = CrocodileColors.greenButton.setColor
+        } else {
+            startGameButton.backgroundColor = .lightGray
+        }
         tableView.reloadData()
     }
 }

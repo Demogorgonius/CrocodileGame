@@ -29,6 +29,7 @@ final class TeamView: CustomView {
         let tableView = UITableView()
         tableView.backgroundColor = .clear
         tableView.separatorColor = .clear
+        tableView
         tableView.register(CrocodileTableViewCell.self, forCellReuseIdentifier: "teamCell")
         return tableView
     }()
@@ -124,15 +125,15 @@ extension TeamView: CrocodileTableViewCellDelegate {
         alertSetName.addTextField { textField in
             textField.placeholder = "Введите название команды"
         }
-        let cancelAction = UIAlertAction(title: "Отменить", style: .default)
         let addTeamAction = UIAlertAction(title: "Добавить", style: .cancel) { action in
             guard let textfield = alertSetName.textFields?.first?.text else { return }
             self.teamManager.createTeam(nameTeam: textfield)
             self.teamArray = TeamManager.shared.getTeamsWhoPlay()
             self.tableView.reloadData()
         }
-        alertSetName.addAction(addTeamAction)
+        let cancelAction = UIAlertAction(title: "Отменить", style: .default)
         alertSetName.addAction(cancelAction)
+        alertSetName.addAction(addTeamAction)
         self.delegate?.didTapAddTeamButton(alertSetName)
     }
 }

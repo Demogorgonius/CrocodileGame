@@ -102,7 +102,6 @@ extension CategoryView: UITableViewDelegate, UITableViewDataSource {
                                  avatar: category.avatar,
                                  background: category.background.setColor,
                                  isSelected: category.selected)
-        cell.selectionStyle = .none
         return cell
     }
     

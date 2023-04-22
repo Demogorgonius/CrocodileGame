@@ -20,7 +20,11 @@ class WrongViewController: CustomViewController<WrongView> {
         customView.setTeamAvatar(icon: (gameManager?.getCurrentTeam().avatar)!, background: (gameManager?.getCurrentTeam().avatarColor.setColor)!)
         customView.setTeamName(name: (gameManager?.getCurrentTeam().name)!)
         customView.setTeamPoints(points: (gameManager?.getCurrentTeam().points)!)
-        customView.setNextTeamLabel(team: "Стройняшки")
+        customView.setNextTeamLabel(team: (gameManager?.getNextTeam().name)!)
+        
+        if (gameManager?.isLastRound)! {
+            customView.setTitleButtonForLastRound()
+        }
     }
     
 }
@@ -30,8 +34,16 @@ extension WrongViewController: WrongViewDelegate {
         let buttonIdentifier = button.restorationIdentifier ?? ""
         
         if buttonIdentifier == "NextTeam" {
-            navigationController?.popToRootViewController(animated: true)
-            // Move to GameViewController
+            
+            if !(gameManager?.isLastRound)! {
+                gameManager?.changeTeam()
+                navigationController?.popViewController(animated: true)
+            } else {
+                print("Game finished")
+                let gameResultViewController = GameResultViewController()
+                navigationController?.pushViewController(gameResultViewController, animated: true)
+            }
+            
         }
     }
 }

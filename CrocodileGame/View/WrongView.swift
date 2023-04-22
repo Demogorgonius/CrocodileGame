@@ -244,6 +244,10 @@ class WrongView: CustomView {
         topTeamViewPointsStackLabel1.text = String(points)
     }
     
+    func setTitleButtonForLastRound() {
+        nextTeamButton.setTitle("Перейти к результатам", for: .normal)
+    }
+    
 }
 
 //MARK: - Actions

@@ -25,7 +25,6 @@ final class GameResultViewController: CustomViewController<GameResultView> {
 
 extension GameResultViewController: GameResultViewDelegate {
     func didTapPlayAgainButton(_ button: UIButton) {
-        let resultViewController = ResultViewController()
-        navigationController?.pushViewController(resultViewController, animated: true)
+        navigationController?.popToRootViewController(animated: true)
     }
 }

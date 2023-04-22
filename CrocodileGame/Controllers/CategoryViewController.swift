@@ -38,7 +38,7 @@ extension CategoryViewController: CategoryViewDelegate {
     }
     
     func startGameButton(_ button: UIButton) {
-        let gameResultViewController = GameResultViewController()
-        navigationController?.pushViewController(gameResultViewController, animated: true)
+        let gameViewController = GameViewController()
+        navigationController?.pushViewController(gameViewController, animated: true)
     }
 }

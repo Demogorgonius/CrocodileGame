@@ -27,8 +27,11 @@ class GameViewController: CustomViewController<GameView> {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(true)
         
+        let currentRound = gameManager.currentRound
+        let totalRound = gameManager.totalRound
+        let currentTeamName = gameManager.getCurrentTeam().name
         setupLabelsFromModel()
-        setupNavigationBar(textLabel: gameManager.getCurrentTeam().name)
+        setupNavigationBar(textLabel: "\(currentRound)/\(totalRound): \(currentTeamName)")
         startCountdownTimer()
     }
     

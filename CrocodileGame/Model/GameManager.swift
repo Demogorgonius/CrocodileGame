@@ -61,6 +61,11 @@ class GameManager {
     func rightAnswer() {
         teamManager.addPointToTeam(teamsWhoPlay[currentTeamIndex].name)
         teamsWhoPlay[currentTeamIndex].points += 1
+        
+        // После последнего раунда записываем очки в юзердефолтс
+        if currentRound == totalRound {
+            teamManager.endGame()
+        }
     }
     
     func changeTeam() {
@@ -84,6 +89,7 @@ class GameManager {
     }
     
     func readTeamsFromTeamManager() {
+        teamManager.startGame()
         teamsWhoPlay = teamManager.getTeamsWhoPlay()
         totalRound = teamsWhoPlay.count * 5
     }

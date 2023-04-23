@@ -17,7 +17,7 @@ final class CategoryView: CustomView {
     //MARK: - Property
     
     weak var delegate: CategoryViewDelegate?
-    var categories = CategoryStorage.shared.all
+    private var categories = CategoryStorage.shared.all
     
     //MARK: - UI Elements
     
@@ -110,4 +110,5 @@ extension CategoryView: UITableViewDelegate, UITableViewDataSource {
         categories = CategoryStorage.shared.all
         tableView.reloadData()
     }
+    
 }

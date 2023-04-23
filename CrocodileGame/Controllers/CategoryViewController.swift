@@ -38,7 +38,6 @@ extension CategoryViewController: CategoryViewDelegate {
     }
     
     func startGameButton(_ button: UIButton) {
-//        guard !categories.getWordsForGame().isEmpty else { return }
         if categories.getWordsForGame().isEmpty {
             
             let alert = UIAlertController(title: "Внимание!", message: "Выберете хотя бы одну категорию!", preferredStyle: .alert)

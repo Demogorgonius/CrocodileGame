@@ -24,7 +24,7 @@ final class ResultView: CustomView {
     
     override func setViews() {
         super.setViews()
-        
+        print(teams)
         tableView.delegate = self
         tableView.dataSource = self
         
@@ -64,7 +64,7 @@ extension ResultView: UITableViewDelegate, UITableViewDataSource {
         cell.configureAsLeaderBoard(name: currentItem.name,
                                     avatar: currentItem.avatar,
                                     avatarColor: currentItem.avatarColor.setColor,
-                                    score: currentItem.points)
+                                    score: currentItem.pointsLifetime)
         return cell
     }
     

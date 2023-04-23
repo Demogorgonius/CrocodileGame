@@ -51,7 +51,7 @@ class GameView: CustomView {
         label.text = "Картошка"
         label.font = UIFont.italicSystemFont(ofSize: 48)
         label.adjustsFontSizeToFitWidth = true
-        label.minimumScaleFactor = 0.5
+        label.minimumScaleFactor = 0.3
         return label
     }()
     
@@ -152,6 +152,8 @@ class GameView: CustomView {
             
             taskVStackView.centerXAnchor.constraint(equalTo: self.safeAreaLayoutGuide.centerXAnchor),
             taskVStackView.centerYAnchor.constraint(equalTo: self.safeAreaLayoutGuide.centerYAnchor),
+            taskVStackView.leadingAnchor.constraint(equalTo: self.safeAreaLayoutGuide.leadingAnchor, constant: 40),
+            taskVStackView.trailingAnchor.constraint(equalTo: self.safeAreaLayoutGuide.trailingAnchor, constant: -40),
             
             conditionalsLabel.widthAnchor.constraint(equalToConstant: 200),
             

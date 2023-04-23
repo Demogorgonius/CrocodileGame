@@ -245,6 +245,7 @@ class RightView: CustomView {
     
     func setTitleButtonForLastRound() {
         nextTeamButton.setTitle("Перейти к результатам", for: .normal)
+        greenCentralViewLabel3.text = ""
     }
     
 }
